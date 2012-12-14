@@ -1,0 +1,79 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'Обязательно'
+      mark: '*'
+    error_notification:
+      default_message: 'Возникли ошибки:'
+    labels:
+      parent_category:
+        name: 'Имя'
+      category:
+        name: 'Имя'
+        specification_attributes: 'Специфичные аттрибуты(разделять запятой)'
+    # Labels and hints examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+
+  common:
+    submit: 'Сохранить'
+    please_wait: 'Пожалуйста, подождите..'
+    are_you_sure?: 'Вы уверены?'
+    admin_tools: 'Опции Администратора'
+
+  application:
+    header:
+      brand: 'Магаз'
+      root_path: 'Главная'
+      parent_categories: 'Категории'
+      sign_in: 'Войти'
+      sign_on: 'Регистрация'
+      sign_out: 'Выйти'
+
+  parent_categories:
+    index:
+      header: 'Корневые категории'
+      new: 'Создать новую корневую категорию'
+    new:
+      header: 'Новая категория'
+    show:
+      destroy: 'Удалить'
+      create_category: 'Добавить вложенную категорию'
+
+  categories:
+    new:
+      header: 'Новая категория'
+    show:
+      parent_category: 'Корневая категория'
+
+  activerecord:
+    models:
+      parent_category: 'Категория'
+      category: 'Вложенная категория'
+
+    attributes:
+      parent_category:
+        name: 'Имя'
+      category:
+        name: 'Имя'
+        specification_attributes: 'Специфичные аттрибуты'
+
+    errors:
+      models:
+        item:
+          attributes:
+            specifications:
+              mismatch: 'Не совпадает спецификация'
+
