@@ -1,0 +1,15 @@
+<%= page_header %>
+
+<%= simple_form_for(resource, url: user_password_path, html: { method: 'post' }) do |form| %>
+  <%= form.error_notification %>
+
+  <%= form.input :email, :required => true %>
+
+  <hr />
+  <%= form.submit t('.submit'), class: 'btn btn-info' %>
+
+  <div class='auth-links'>
+    <%= link_to t('auth.sign_up'), new_user_registration_path %>
+    <%= link_to t('auth.sign_in'), new_user_session_path %>
+  </div>
+<% end %>

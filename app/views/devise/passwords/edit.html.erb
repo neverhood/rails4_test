@@ -1,0 +1,20 @@
+<%= page_header %>
+
+<%= simple_form_for(resource, url: user_password_path, html: { method: 'put' }) do |form| %>
+  <%= form.error_notification %>
+
+  <%= form.input :reset_password_token, :as => :hidden %>
+  <%= form.full_error :reset_password_token %>
+
+  <%= form.input :password, :required => true %>
+  <%= form.input :password_confirmation, :required => true %>
+
+  <hr />
+  <%= form.submit t('.submit'), class: 'btn btn-info' %>
+
+  <div class='auth-links'>
+    <%= link_to t('auth.sign_up'), new_user_registration_path %>
+    <%= link_to t('auth.sign_in'), new_user_session_path %>
+  </div>
+<% end %>
+

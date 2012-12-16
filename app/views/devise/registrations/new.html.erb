@@ -1,0 +1,27 @@
+<%= page_header %>
+
+<%= simple_form_for resource, as: resource_name, url: user_registration_path, class: 'form form-horizontal' do |form| %>
+  <%= error_messages_for resource %>
+
+  <%= form.input :email, required: true, autofocus: true %>
+  <%= form.input :password, required: true %>
+  <%= form.input :password_confirmation, required: true %>
+
+  <label for='user_male_true' class='radio'>
+    <%= t 'common.male' %>
+    <%= form.radio_button :male, true, selected: false %>
+  </label>
+
+  <label for='user_male_false' class='radio'>
+    <%= t 'common.female' %>
+    <%= form.radio_button :male, false, selected: false %>
+  </label>
+  <hr />
+
+  <%= form.submit t('.header'), class: 'btn btn-info', data: { disable_with: t('common.please_wait') } %>
+
+  <div class='auth-links'>
+    <%= link_to t('auth.forgot_password?'), new_user_password_path %>
+    <%= link_to t('auth.sign_in'), new_user_session_path %>
+  </div>
+<% end %>

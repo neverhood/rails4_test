@@ -1,0 +1,18 @@
+body#registrations {
+}
+
+body#sessions {
+}
+
+body#passwords {
+}
+
+body#registrations, body#sessions, body#passwords {
+    div.auth-links {
+        margin: 15px 0;
+
+        a {
+            display: block; 
+        }
+    }
+}

@@ -19,12 +19,16 @@ group :assets do
   # gem 'therubyracer', platforms: :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'bootstrap-sass'
+  gem 'font-awesome-sass-rails'
 end
 
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -42,15 +46,14 @@ end
 
 gem 'pg'
 
-gem 'devise'
-gem 'strong_parameters'
+gem 'devise', git: 'https://github.com/idl3/devise.git', branch: 'rails4'
 gem 'responders'
 gem 'pry-rails'
 gem 'russian'
 gem 'carrierwave'
 gem 'kaminari'
 
-gem 'simple_form'
+gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git', branch: 'rails_4'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

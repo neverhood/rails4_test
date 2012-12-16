@@ -1,0 +1,23 @@
+<div class="navbar navbar-inverse" id='header'>
+
+  <div class="navbar-inner">
+    <%= link_to t('.brand'), root_path, class: 'brand', data: { 'no-turbolink' => true } %>
+
+    <ul class="nav">
+      <%= navbar_link t('.root_path'), root_path %>
+      <%- if user_signed_in? %>
+        <%= navbar_link t('.home_page'), '#' %>
+      <%- end %>
+    </ul>
+
+    <ul class='nav pull-right'>
+      <%- if user_signed_in? %>
+        <%= navbar_link t('auth.sign_out'), destroy_user_session_path, method: 'delete' %>
+      <% else %>
+        <%= navbar_link t('auth.sign_in'), new_user_session_path %>
+        <%= navbar_link t('auth.sign_up'), new_user_registration_path %>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

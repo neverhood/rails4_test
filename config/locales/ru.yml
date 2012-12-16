@@ -8,11 +8,11 @@ ru:
     error_notification:
       default_message: 'Возникли ошибки:'
     labels:
-      parent_category:
-        name: 'Имя'
-      category:
-        name: 'Имя'
-        specification_attributes: 'Специфичные аттрибуты(разделять запятой)'
+      user:
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'
     # Labels and hints examples
     # labels:
     #   defaults:
@@ -31,49 +31,53 @@ ru:
     submit: 'Сохранить'
     please_wait: 'Пожалуйста, подождите..'
     are_you_sure?: 'Вы уверены?'
-    admin_tools: 'Опции Администратора'
+    male: 'Парень'
+    female: 'Девушка'
+
+  auth:
+    forgot_password?: 'Забыли пароль?'
+    recover_password: 'Восстановление пароля'
+    sign_in: 'Войти'
+    sign_up: 'Регистрация'
+    sign_out: 'Выйти'
 
   application:
     header:
-      brand: 'Магаз'
+      brand: 'Лицемеры'
       root_path: 'Главная'
-      parent_categories: 'Категории'
-      sign_in: 'Войти'
-      sign_on: 'Регистрация'
-      sign_out: 'Выйти'
+      home_page: 'Моя страница'
 
-  parent_categories:
+  devise:
+    sessions:
+      new:
+        header: 'Вход на сайт'
+    registrations:
+      new:
+        header: 'Регистрация'
+    passwords:
+      new:
+        header: 'Забыли пароль?'
+        submit: 'Получить инструкции по восстановлению пароля'
+      edit:
+        header: 'Изменение пароля'
+        submit: 'Изменить пароль'
+
+  welcome:
     index:
-      header: 'Корневые категории'
-      new: 'Создать новую корневую категорию'
-    new:
-      header: 'Новая категория'
-    show:
-      destroy: 'Удалить'
-      create_category: 'Добавить вложенную категорию'
+      header: 'Велкоме!'
 
-  categories:
-    new:
-      header: 'Новая категория'
-    show:
-      parent_category: 'Корневая категория'
 
   activerecord:
     models:
-      parent_category: 'Категория'
-      category: 'Вложенная категория'
 
     attributes:
-      parent_category:
-        name: 'Имя'
-      category:
-        name: 'Имя'
-        specification_attributes: 'Специфичные аттрибуты'
+      user:
+        male: 'Пол'
+        password: 'Пароль'
 
     errors:
       models:
-        item:
+        user:
           attributes:
-            specifications:
-              mismatch: 'Не совпадает спецификация'
-
+            male:
+              blank: 'не выбран'

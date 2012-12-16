@@ -22,6 +22,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.include(CustomMatchers)
+  config.include(Capybara::DSL)
+  config.include(AuthHelper)
 
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
