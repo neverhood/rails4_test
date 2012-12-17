@@ -17,3 +17,5 @@
 
 tags
 .rvmrc
+
+/public/uploads/user/avatar/*
