@@ -79,7 +79,16 @@ $.api.userAvatars = {
             $('img#croppable-user-avatar').attr('src', response.image.medium)
             $('img#user-avatar-thumb').attr('src', response.image.medium)
 
+            $('a#crop-photo, a#delete-user-avatar').removeClass('hidden')
+
         $('form#crop-user-avatar').bind 'ajax:complete', (event, xhr, status) ->
             $('div#crop-photo-modal').modal('hide')
+
+        $('a#delete-user-avatar').bind 'ajax:complete', (event, xhr, status) ->
+            response = $.parseJSON( xhr.responseText )
+
+            $('div#profile-avatar').find('img').attr('src', response.image.medium)
+
+            $('a#crop-photo, a#delete-user-avatar').addClass('hidden')
 
 }

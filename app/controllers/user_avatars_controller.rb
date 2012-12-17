@@ -14,9 +14,9 @@ class UserAvatarsController < ApplicationController
   end
 
   def destroy
-    current_user.remove_avatar!
+    current_user.update_attributes(remove_avatar: true)
 
-    render nothing: true
+    render json: { image: { medium: current_user.avatar.url(:medium), thumb: current_user.avatar.url(:thumb) } }
   end
 
   private

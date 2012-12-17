@@ -3,4 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body#profiles {
+    div#user-avatar-options {
+        a { display: block; }
+    }
 }

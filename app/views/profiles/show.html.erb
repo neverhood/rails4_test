@@ -11,10 +11,13 @@
   <%= image_tag @user.avatar.medium.url %>
 
   <%- if profile_owner? %>
-    <div>
-      <div><%= link_to t('.new_photo'), '#', id: 'upload-new-photo' %></div>
-      <div><%= link_to t('.crop_photo'), '#', id: 'crop-photo' %></div>
-      <div><%= link_to t('.delete_photo'), '#', data: { confirm: t('common.are_you_sure?') } %></div>
+    <div id='user-avatar-options'>
+      <%= link_to t('.new_photo'), '#', id: 'upload-new-photo' %>
+
+      <%= link_to t('.crop_photo'), '#', id: 'crop-photo', class: "#{current_user.avatar.present?? '' : 'hidden'}" %>
+      <%= link_to t('.delete_photo'), user_avatar_path, method: 'delete',
+              remote: true, id: 'delete-user-avatar', class: "#{current_user.avatar.present?? '' : 'hidden'}",
+              data: { confirm: t('common.are_you_sure?') } %>
     </div>
   <% end %>
 </div>
