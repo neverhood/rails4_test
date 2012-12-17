@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   before_validation -> { self.login.downcase! }, if: -> { self.login_changed? }
   after_update      -> { self.avatar.recreate_versions! }, if: -> { self.cropping? }
 
-
   def sex
     male?? :male : :female
   end

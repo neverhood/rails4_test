@@ -8,12 +8,13 @@ $.api.userAvatars = {
     initJcrop: ->
         jcropUpdatePreview = (coords) ->
             croppedImage = $('img#user-avatar-thumb')
+            originalImage = $('img#croppable-user-avatar')
             rx = 150 / coords.w
             ry = 150 / coords.h
 
             croppedImage.css
-                width: Math.round(rx * 200) + 'px'
-                height: Math.round(ry * 270) + 'px'
+                width: Math.round(rx * originalImage.width()) + 'px'
+                height: Math.round(ry * originalImage.height()) + 'px'
                 marginLeft: '-' + Math.round(rx * coords.x) + 'px'
                 marginTop: '-' + Math.round(ry * coords.y) + 'px'
 
@@ -76,6 +77,9 @@ $.api.userAvatars = {
             response = $.parseJSON( xhr.responseText )
             avatarContainer.find('img').attr('src', response.image.medium)
             $('img#croppable-user-avatar').attr('src', response.image.medium)
-            $('img#user-avatar-thumb').attr('src', response.image.thumb)
+            $('img#user-avatar-thumb').attr('src', response.image.medium)
+
+        $('form#crop-user-avatar').bind 'ajax:complete', (event, xhr, status) ->
+            $('div#crop-photo-modal').modal('hide')
 
 }

@@ -1,28 +1,30 @@
 <%- if profile_owner? %>
   <div id='crop-photo-modal' class='modal hide fade'>
     <div class='modal-header'>
-      <%= t '.header' %>
+      <strong><%= t '.header' %></strong>
 
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
     <div class='modal-body'>
-      <%= image_tag current_user.avatar.medium.url, id: 'croppable-user-avatar' %>
+      <div id='user-avatar-cropbox'>
+        <%= image_tag current_user.avatar.medium.url, id: 'croppable-user-avatar' %>
+      </div>
 
       <div id='user-avatar-thumb-preview'>
         <%= image_tag current_user.avatar.medium.url, id: 'user-avatar-thumb' %>
       </div>
+    </div>
 
-      <%= simple_form_for current_user, url: user_avatar_path, method: 'put', remote: true do |form| %>
+    <div class='modal-footer'>
+      <%= simple_form_for current_user, url: user_avatar_path, remote: true, method: 'put', html: { id: 'crop-user-avatar' } do |form| %>
         <% %w(crop_x crop_y crop_h crop_w).each do |attribute| %>
           <%= form.input attribute, :as => :hidden %>
         <% end %>
 
-        <%= form.submit t('common.submit'), class: 'btn btn-info' %>
+        <%= form.submit t('common.submit'), class: 'btn btn-info', data: { disable_with: t('common.please_wait') } %>
       <% end %>
-    </div>
 
-    <div class='modal-footer'>
       <button class="btn" data-dismiss="modal" aria-hidden="true"> <%= t 'common.close' %> </button>
     </div>
   </div>

@@ -49,16 +49,27 @@ body#profiles {
     }
 
     div#crop-photo-modal {
+        div#user-avatar-cropbox {
+            @extend .pull-left;
+        }
+
+        form#crop-user-avatar {
+            display: inline-block;
+
+            input[type="submit"] {
+                margin-right: 350px;
+            }
+        }
+
         div#user-avatar-thumb-preview {
             width: 150px;
             height: 150px;
+            margin-right: 25px;
 
             float: right;
             overflow: hidden;
 
-            img {
-                max-width: none;
-            }
+            img { max-width: none; }
         }
     }
 }

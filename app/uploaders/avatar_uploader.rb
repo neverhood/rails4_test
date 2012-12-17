@@ -43,7 +43,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process resize_to_fill: [ 200, 270 ]
+    process resize_to_fit: [ 200, 270 ]
   end
 
   version :thumb do
