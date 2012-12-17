@@ -10,7 +10,7 @@
       <%= image_tag current_user.avatar.medium.url, id: 'croppable-user-avatar' %>
 
       <div id='user-avatar-thumb-preview'>
-        <%= image_tag current_user.avatar.large.url, id: 'user-avatar-thumb' %>
+        <%= image_tag current_user.avatar.medium.url, id: 'user-avatar-thumb' %>
       </div>
 
       <%= simple_form_for current_user, url: user_avatar_path, method: 'put', remote: true do |form| %>

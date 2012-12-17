@@ -50,10 +50,15 @@ body#profiles {
 
     div#crop-photo-modal {
         div#user-avatar-thumb-preview {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
+
+            float: right;
             overflow: hidden;
+
+            img {
+                max-width: none;
+            }
         }
     }
-
 }

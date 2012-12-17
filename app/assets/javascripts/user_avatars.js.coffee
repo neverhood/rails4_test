@@ -7,12 +7,15 @@
 $.api.userAvatars = {
     initJcrop: ->
         jcropUpdatePreview = (coords) ->
-            croppedImage =
-            $('img#user-avatar-thumb').css
-                width: Math.round(100/coords.w * $('img#croppable-user-avatar').width()) + 'px'
-                height: Math.round(100/coords.h * $('img#croppable-user-avatar').height()) + 'px'
-                marginLeft: '-' + Math.round(100/coords.w * coords.x) + 'px'
-                marginTop: '-' + Math.round(100/coords.h * coords.y) + 'px'
+            croppedImage = $('img#user-avatar-thumb')
+            rx = 150 / coords.w
+            ry = 150 / coords.h
+
+            croppedImage.css
+                width: Math.round(rx * 200) + 'px'
+                height: Math.round(ry * 270) + 'px'
+                marginLeft: '-' + Math.round(rx * coords.x) + 'px'
+                marginTop: '-' + Math.round(ry * coords.y) + 'px'
 
         jcropUpdateInputs = (coords) ->
             $('input#user_crop_x').val coords.x

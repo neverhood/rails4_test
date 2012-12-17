@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 99d142a9375f9ba1960863b3cc745265aa9a14df
+  revision: d8607c1d7fa063873a570cace5bd4c4f55bb8af9
   specs:
     actionmailer (4.0.0.beta)
       actionpack (= 4.0.0.beta)
@@ -196,7 +196,7 @@ GEM
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
     rspec-core (2.12.2)
-    rspec-expectations (2.12.0)
+    rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.12.0)
     rspec-rails (2.12.0)
