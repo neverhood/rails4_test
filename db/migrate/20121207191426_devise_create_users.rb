@@ -19,8 +19,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-      t.boolean  :male, default: false
+      t.boolean  :male
       t.string   :login
+      t.string   :avatar
+      t.string   :name
       t.hstore   :details
 
       ## Confirmable

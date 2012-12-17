@@ -1,0 +1,33 @@
+<%- if profile_owner? %>
+  <div id='upload-new-photo-modal' class='modal hide fade'>
+    <div class='modal-header'>
+      <%= t '.header' %>
+
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+
+    <div class='modal-body'>
+      <%= t('.tip').html_safe %>
+
+      <%= simple_form_for current_user, url: user_avatar_path, remote: true, id: 'new-user-avatar', html: { method: 'post', id: 'new-user-avatar', multipart: true } do |form| %>
+
+        <div id='new-photo-preview'>
+        </div>
+
+        <div id='new-photo-button'>
+          <input type="button" value="<%= t '.browse' %>">
+          <%= form.input :avatar, :as => :file, :label => false %>
+        </div>
+
+        <hr />
+
+        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token.to_s %>'>
+        <%= form.submit t('common.submit'), class: 'btn btn-info' %>
+      <% end %>
+    </div>
+
+    <div class='modal-footer'>
+      <button class="btn" data-dismiss="modal" aria-hidden="true"> <%= t 'common.close' %> </button>
+    </div>
+  </div>
+<% end %>

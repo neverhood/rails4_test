@@ -1,0 +1,17 @@
+<%= page_header %>
+
+<%= simple_form_for current_user, html: { multipart: true, method: 'put',
+                                          class: 'form form-horizontal', id: 'edit-user-details' } do |form| %>
+  <%= error_messages_for current_user %>
+
+  <div id='current-avatar'> <%= image_tag current_user.avatar.medium %> </div>
+  <%= form.input :name %>
+
+  <%= heads_up! t('.login_explanation') %>
+  <%= form.input :login, hint: t('.login_hint') %>
+  <%= form.input :avatar, :as => :file %>
+
+  <hr />
+
+  <%= form.submit t('common.submit'), class: 'btn btn-info' %>
+<% end %>

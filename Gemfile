@@ -25,6 +25,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'remotipart'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -44,16 +45,20 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+# DB
 gem 'pg'
 
 gem 'devise', git: 'https://github.com/idl3/devise.git', branch: 'rails4'
 gem 'responders'
 gem 'pry-rails'
 gem 'russian'
-gem 'carrierwave'
 gem 'kaminari'
-
 gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git', branch: 'rails_4'
+
+# Image Processing
+gem 'carrierwave'
+gem 'mini_magick'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

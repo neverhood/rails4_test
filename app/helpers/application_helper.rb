@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def navbar_link(text, path, options = { data: { 'no-turbolink' => true } })
+  def navbar_link(text, path, options = {})
     "<li class='#{ current_page?(path) ? "active" : ""}'> #{ link_to text, path, options } </li>".html_safe
   end
 
@@ -24,6 +24,14 @@ module ApplicationHelper
 
   def subheader(text)
     "<div class='page-header'> <h3> <small> #{ text } </small> </h3> </div>"
+  end
+
+  def heads_up! text
+    "<div class='heads-up'> <strong> #{ t('common.heads_up!') } </strong> #{ text } </div>".html_safe
+  end
+
+  def profile_owner?
+    @user.present? and user_signed_in? and ( current_user.id == @user.id )
   end
 
 end

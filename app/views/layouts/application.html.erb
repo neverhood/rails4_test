@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body id='<%= controller_name.dasherize %>' data-action='<%= action_name.dasherize %>'>
+<body id='<%= controller_name.dasherize %>' data-action='<%= action_name.dasherize %>' data-profile-owner='<%= profile_owner? %>'>
 
 <%= render 'header' %>
 

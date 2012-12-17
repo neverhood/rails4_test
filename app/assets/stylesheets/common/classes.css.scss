@@ -6,3 +6,11 @@
 
 .absolute { position: absolute; }
 
+.error-text { color: $errorText; }
+
+div.heads-up {
+    @extend .alert;
+    @extend .alert-info;
+
+    @extend .span6;
+}

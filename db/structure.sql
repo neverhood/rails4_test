@@ -69,6 +69,8 @@ CREATE TABLE users (
     last_sign_in_ip character varying(255),
     male boolean,
     login character varying(255),
+    avatar character varying(255),
+    name character varying(255),
     details hstore,
     created_at timestamp without time zone,
     updated_at timestamp without time zone

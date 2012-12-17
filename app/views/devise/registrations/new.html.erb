@@ -7,15 +7,19 @@
   <%= form.input :password, required: true %>
   <%= form.input :password_confirmation, required: true %>
 
-  <label for='user_male_true' class='radio'>
-    <%= t 'common.male' %>
-    <%= form.radio_button :male, true, selected: false %>
-  </label>
+  <div class='well'>
+    <div class='alert alert-info'>
+      <%= t('.heads_up!').html_safe %>
+    </div>
 
-  <label for='user_male_false' class='radio'>
-    <%= t 'common.female' %>
-    <%= form.radio_button :male, false, selected: false %>
-  </label>
+    <label for='user_male_true' class='radio'>
+      <%= t 'common.male' %> <%= form.radio_button :male, true, selected: false %>
+    </label>
+
+    <label for='user_male_false' class='radio'>
+      <%= t 'common.female' %> <%= form.radio_button :male, false, selected: false %>
+    </label>
+  </div>
   <hr />
 
   <%= form.submit t('.header'), class: 'btn btn-info', data: { disable_with: t('common.please_wait') } %>

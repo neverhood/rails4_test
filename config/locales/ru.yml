@@ -33,6 +33,9 @@ ru:
     are_you_sure?: 'Вы уверены?'
     male: 'Парень'
     female: 'Девушка'
+    heads_up!: 'Внимание!'
+    not_found: 'Запись не найдена'
+    close: 'Закрыть'
 
   auth:
     forgot_password?: 'Забыли пароль?'
@@ -54,6 +57,11 @@ ru:
     registrations:
       new:
         header: 'Регистрация'
+        heads_up!: '<strong> Внимание! </strong> Не промахнитесь! Поменять пол позже будет невозможно'
+      edit:
+        header: 'Изменение регистрационных данных'
+        password_tip: 'Оставьте это поле пустым если не хотите менять пароль'
+        current_password_tip: 'Нам нужен Ваш текущий пароль чтобы подтвердить изменения'
     passwords:
       new:
         header: 'Забыли пароль?'
@@ -66,7 +74,30 @@ ru:
     index:
       header: 'Велкоме!'
 
+  profiles:
+    show:
+      edit: 'Редактировать информацию'
+      edit_registration: 'Редактировать регистрационные данные'
+      new_photo: 'Загрузить новую фотографию'
+      crop_photo: 'Изменить миниатюру'
+      delete_photo: 'Удалить фотографию'
 
+  user_details:
+    edit:
+      header: 'Редактирование профиля'
+      login_explanation: 'Логин - это Ваше имя на сайте. С помощью него пользователи смогут посещать вашу страницу: <strong>http://bebet.net/profiles/<span id="current-login">ваш-логин</span></strong>'
+      login_hint: 'разрешены только латинские буквы (A-Z) и символы "-", "_". Логин должен начинаться и заканчиваться на латинскую букву'
+
+  user_avatars:
+    new_photo_modal:
+      header: 'Загрузка новой фотографии'
+      tip: 'Друзьям будет проще узнать Вас, если Вы загрузите свою настоящую фотографию. <br /> Вы можете загрузить изображение в формате JPG, GIF или PNG.'
+      browse: 'Выбрать фотографию'
+    crop_photo_modal:
+      header: 'Изменить миниатюру'
+
+
+  # Activerecord
   activerecord:
     models:
 
@@ -74,6 +105,10 @@ ru:
       user:
         male: 'Пол'
         password: 'Пароль'
+        current_password: 'Текущий пароль'
+        name: 'Имя'
+        login: 'Логин'
+        avatar: 'Фото'
 
     errors:
       models:
@@ -81,3 +116,5 @@ ru:
           attributes:
             male:
               blank: 'не выбран'
+            login:
+              invalid: 'Имеет неверное значение: разрешены только латинские буквы (A-Z) и символы "-", "_". Логин должен начинаться и заканчиваться на латинскую букву'

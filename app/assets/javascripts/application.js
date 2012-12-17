@@ -11,22 +11,30 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.remotipart
 //= require underscore
 //= require jquery_ujs
 //= require turbolinks
 //
+//= require bootstrap-modal
+//
 //= require api/api
 //
 //= require users
+//= require user_details
+//= require user_avatars
+//= require profiles
+//= require welcome
 //= require_self
 //
 
 $(document).on('ready page:load', function() {
-    if ( typeof $.api.initialized  === 'undefined' ) {
-        $.api.controller = this.body.id;
-        $.api.action     = this.body.attributes['data-action'].value;
+    $.api.controller     = this.body.id;
+    $.api.action         = this.body.attributes['data-action'].value;
+    $.api.isProfileOwner = this.body.attributes['data-profile-owner'].value === 'true';
 
-        if ( typeof $.api[ $.api.controller ] === 'object' ) $.api[ $.api.controller ].init();
-        $.api.initialized = true
-    }
+    if ( $('div#current-user-json').length )
+        $.api.currentUser = $.parseJSON( $('div#current-user-json') )
+
+    if ( typeof $.api[ $.camelCase($.api.controller) ] === 'object' ) $.api[ $.camelCase($.api.controller) ].init();
 });

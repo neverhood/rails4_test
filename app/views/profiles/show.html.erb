@@ -1,0 +1,23 @@
+<h2> this is <%= @user.email %> !! </h2>
+
+<%- if profile_owner? %>
+  <div>
+    <div><%= link_to t('.edit'), edit_user_path %></div>
+    <div><%= link_to t('.edit_registration'), edit_user_registration_path %></div>
+  </div>
+<% end %>
+
+<div id='profile-avatar'>
+  <%= image_tag @user.avatar.medium.url %>
+
+  <%- if profile_owner? %>
+    <div>
+      <div><%= link_to t('.new_photo'), '#', id: 'upload-new-photo' %></div>
+      <div><%= link_to t('.crop_photo'), '#', id: 'crop-photo' %></div>
+      <div><%= link_to t('.delete_photo'), '#', data: { confirm: t('common.are_you_sure?') } %></div>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'user_avatars/new_photo_modal' %>
+<%= render 'user_avatars/crop_photo_modal' %>

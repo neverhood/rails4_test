@@ -1,0 +1,59 @@
+// Place all the styles related to the user_avatar controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body#profiles {
+
+    div#upload-new-photo-modal {
+        width: 600px;
+        top: 40%;
+
+        div.modal-body {
+            text-align: center;
+            min-height: 500px;
+            max-height: 600px;
+        }
+
+        div#new-photo-preview {
+            width: 250px;
+            height: 370px;
+
+            margin: 0 auto;
+        }
+
+        div#new-photo-button {
+            width: 565px;
+
+            text-align: center;
+
+            cursor: pointer;
+            float: left;
+            overflow: hidden;
+            position: relative;
+        }
+
+        div#new-photo-button input[type="button"] {
+            @extend .btn;
+            @extend .btn-info;
+        }
+
+        div#new-photo-button input[type="file"] { 
+            width: 565px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            cursor: pointer;
+            opacity: 0;
+            filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+        }
+    }
+
+    div#crop-photo-modal {
+        div#user-avatar-thumb-preview {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+    }
+
+}
