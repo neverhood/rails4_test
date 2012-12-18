@@ -9,11 +9,20 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  include Subscribable
+
   validates :male, presence: true
-  validates :login, uniqueness: true, length: { within: (3..20) }, allow_nil: true, format: { with: /\A[A-Za-z]+[_-]*[A-Za-z]+\z/ }
+  validates :login, uniqueness: true, length: { within: (3..20) }, allow_nil: true, format: { with: /\A[A-Za-z]+[A-Za-z_-]*[A-Za-z]+\z/ }
+
+  # This scope is to be used on collections to avoid loading unneeded attributes
+  scope :previews, -> amount = 10 { select('users.id', 'users.name', 'users.male', 'users.avatar', 'users.details').limit(amount) }
 
   before_validation -> { self.login.downcase! }, if: -> { self.login_changed? }
   after_update      -> { self.avatar.recreate_versions! }, if: -> { self.cropping? }
+
+  def details
+    @details ||= OpenStruct.new(read_attribute(:details))
+  end
 
   def sex
     male?? :male : :female

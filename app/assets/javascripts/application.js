@@ -23,6 +23,7 @@
 //= require users
 //= require user_details
 //= require user_avatars
+//= require subscriptions
 //= require profiles
 //= require welcome
 //= require_self

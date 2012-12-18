@@ -1,4 +1,4 @@
-<h2> this is <%= @user.email %> !! </h2>
+<h2> this is <%= @user.email %> !! <%= @user.name %> </h2>
 
 <%- if profile_owner? %>
   <div>
@@ -10,18 +10,17 @@
 <div id='profile-avatar'>
   <%= image_tag @user.avatar.medium.url %>
 
-  <%- if profile_owner? %>
-    <div id='user-avatar-options'>
-      <%= link_to t('.new_photo'), '#', id: 'upload-new-photo' %>
-
-      <%= link_to t('.crop_photo'), '#', id: 'crop-photo', class: "#{current_user.avatar.present?? '' : 'hidden'}" %>
-      <%= link_to t('.delete_photo'), user_avatar_path, method: 'delete',
-              remote: true, id: 'delete-user-avatar', class: "#{current_user.avatar.present?? '' : 'hidden'}",
-              data: { confirm: t('common.are_you_sure?') } %>
-    </div>
-  <% end %>
+  <%= render 'user_avatars/options' %>
 </div>
+
+<%= render 'subscriptions/options' %>
+
+<%- if profile_owner? %>
+  <%= subheader t('.direct_subscriptions') %>
+
+  <%= render 'subscriptions/direct_subscriptions' %>
+<% end %>
+
 
 <%= render 'user_avatars/new_photo_modal' %>
 <%= render 'user_avatars/crop_photo_modal' %>
-

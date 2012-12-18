@@ -14,3 +14,10 @@ div.heads-up {
 
     @extend .span6;
 }
+
+%non-decorated {
+    text-decoration: none;
+    &:visited {
+        text-decoration: none;
+    }
+}

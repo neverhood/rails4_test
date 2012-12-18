@@ -1,2 +1,5 @@
 ru:
   flash:
+    subscriptions:
+      create: '<strong class="notification"> Подписка оформлена </strong>'
+      destroy: '<strong class="notification"> Подписка отменена </strong>'

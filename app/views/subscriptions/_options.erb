@@ -1,0 +1,10 @@
+<%- if profile_visitor? %>
+  <div id='subscription-options'>
+    <%- if current_user.subscribed_to? @user %>
+      <%= link_to t('.unsubscribe'), subscriptions_path(user_id: @user.id), method: 'delete', id: 'unsubscribe', remote: true %>
+    <%- else %>
+      <%= link_to t('.subscribe'), subscriptions_path(user_id: @user.id), method: 'post', id: 'subscribe', remote: true %>
+    <% end %>
+  </div>
+<% end %>
+

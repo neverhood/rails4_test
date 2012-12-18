@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def subheader(text)
-    "<div class='page-header'> <h3> <small> #{ text } </small> </h3> </div>"
+    "<div class='page-header'> <h3> <small> #{ text } </small> </h3> </div>".html_safe
   end
 
   def heads_up! text
@@ -32,6 +32,10 @@ module ApplicationHelper
 
   def profile_owner?
     @user.present? and user_signed_in? and ( current_user.id == @user.id )
+  end
+
+  def profile_visitor?
+    user_signed_in? and not profile_owner?
   end
 
 end

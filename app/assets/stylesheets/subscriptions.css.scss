@@ -1,0 +1,21 @@
+// Place all the styles related to the subscriptions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body#profiles {
+    div.subscription-entry {
+        a { @extend %non-decorated; }
+
+        @extend .pull-left;
+        width: 104px;
+        height: 120px;
+
+        div.subscription-name {
+            text-align: center;
+            line-height: 12px;
+            font-size: 13px;
+
+            text-decoration: none;
+        }
+    }
+}

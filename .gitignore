@@ -19,3 +19,4 @@ tags
 .rvmrc
 
 /public/uploads/user/avatar/*
+/public/uploads/tmp/*

@@ -52,6 +52,39 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE subscriptions (
+    id integer NOT NULL,
+    user_id integer,
+    subscribed_user_id integer,
+    confirmed boolean,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE subscriptions_id_seq OWNED BY subscriptions.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -100,7 +133,22 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscriptions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY subscriptions
+    ADD CONSTRAINT subscriptions_pkey PRIMARY KEY (id);
 
 
 --
@@ -109,6 +157,20 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_subscriptions_on_subscribed_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_subscriptions_on_subscribed_user_id ON subscriptions USING btree (subscribed_user_id);
+
+
+--
+-- Name: index_subscriptions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_subscriptions_on_user_id ON subscriptions USING btree (user_id);
 
 
 --
@@ -148,3 +210,5 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20121206214210');
 
 INSERT INTO schema_migrations (version) VALUES ('20121207191426');
+
+INSERT INTO schema_migrations (version) VALUES ('20121218131734');

@@ -14,7 +14,7 @@ class UserDetailsController < ApplicationController
   private
 
   def user_details_params
-    params.require(:user).permit(:login, :avatar, :remove_avatar, :name)
+    params.require(:user).permit(:login, :avatar, :name)
   end
 
 end

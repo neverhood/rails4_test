@@ -35,6 +35,7 @@ ru:
     female: 'Девушка'
     heads_up!: 'Внимание!'
     not_found: 'Запись не найдена'
+    heads_up!: 'Внимание!'
     close: 'Закрыть'
 
   auth:
@@ -78,9 +79,7 @@ ru:
     show:
       edit: 'Редактировать информацию'
       edit_registration: 'Редактировать регистрационные данные'
-      new_photo: 'Загрузить новую фотографию'
-      crop_photo: 'Изменить миниатюру'
-      delete_photo: 'Удалить фотографию'
+      direct_subscriptions: 'Люди, на которых Вы подписаны'
 
   user_details:
     edit:
@@ -95,7 +94,15 @@ ru:
       browse: 'Выбрать фотографию'
     crop_photo_modal:
       header: 'Изменить миниатюру'
+    options:
+      new_photo: 'Загрузить новую фотографию'
+      crop_photo: 'Изменить миниатюру'
+      delete_photo: 'Удалить фотографию'
 
+  subscriptions:
+    options:
+      subscribe: 'Подписаться'
+      unsubscribe: 'Отписаться'
 
   # Activerecord
   activerecord:

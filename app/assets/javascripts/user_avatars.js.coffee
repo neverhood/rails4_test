@@ -9,8 +9,8 @@ $.api.userAvatars = {
         jcropUpdatePreview = (coords) ->
             croppedImage = $('img#user-avatar-thumb')
             originalImage = $('img#croppable-user-avatar')
-            rx = 150 / coords.w
-            ry = 150 / coords.h
+            rx = 100 / coords.w
+            ry = 100 / coords.h
 
             croppedImage.css
                 width: Math.round(rx * originalImage.width()) + 'px'
