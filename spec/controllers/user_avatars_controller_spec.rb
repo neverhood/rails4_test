@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe UserAvatarController do
+describe UserAvatarsController do
 
 end
