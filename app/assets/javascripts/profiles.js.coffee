@@ -6,4 +6,5 @@ $.api.profiles = {
     init: ->
         $.api.userAvatars.init() if $.api.isProfileOwner
         $.api.subscriptions.init() unless $.api.isProfileOwner
+        $.api.conversations.init() unless $.api.isProfileOwner
 }

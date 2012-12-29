@@ -17,8 +17,8 @@ module Subscribable
   end
 
   def self.included(base)
-    base.has_many :subscriptions
-    base.has_many :inverse_subscriptions, class_name: 'Subscription', foreign_key: 'subscribed_user_id'
+    base.has_many :subscriptions, :dependent => :destroy
+    base.has_many :inverse_subscriptions, class_name: 'Subscription', foreign_key: 'subscribed_user_id', dependent: :destroy
     base.has_many :subscribed_users, :through => :subscriptions
     base.has_many :subscribers, :through => :inverse_subscriptions, :source => :user
   end

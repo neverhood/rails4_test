@@ -3,10 +3,7 @@
   <div class='subscription-entry'>
     <%= link_to user_path(subscription.id) do %>
       <div class='subscription-avatar'> <%= image_tag subscription.avatar.thumb.url %> </div>
-
-      <%- if subscription.name.present? %>
-        <div class='subscription-name'> <%= truncate(subscription.name, length: 20) %> </div>
-      <%- end %>
+      <div class='subscription-name'> <%= truncate(subscription.name, length: 20) %> </div>
     <% end %>
   </div>
 

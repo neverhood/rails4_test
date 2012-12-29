@@ -38,9 +38,110 @@ COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: message_groups(integer, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION message_groups(conv_id integer, page integer) RETURNS TABLE(ids integer[])
+    LANGUAGE plpgsql
+    AS $$
+      DECLARE
+         _id    int;
+         _uid   int;
+         _id0   int;                         -- id of last row
+         _uid0  int;                         -- user_id of last row
+         offset_value int;
+      BEGIN
+         offset_value := ( page - 1 ) * 100;
+
+         FOR _id, _uid IN
+             SELECT id, user_id FROM messages WHERE messages.conversation_id = conv_id ORDER BY id DESC LIMIT 100 OFFSET offset_value -- fetch by 100 messages a time
+         LOOP
+             IF _uid <> _uid0 THEN
+                RETURN QUERY VALUES (ids);   -- output row (never happens after 1 row)
+                ids := ARRAY[_id];           -- start new array
+             ELSE
+                ids := ids || _id;           -- add to array
+             END IF;
+
+             _id0  := _id;
+             _uid0 := _uid;                  -- remember last row
+         END LOOP;
+
+         RETURN QUERY VALUES (ids);          -- output last iteration
+      END
+      $$;
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
+
+--
+-- Name: conversations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE conversations (
+    id integer NOT NULL,
+    users integer[],
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE conversations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE conversations_id_seq OWNED BY conversations.id;
+
+
+--
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE messages (
+    id integer NOT NULL,
+    user_id integer,
+    interlocutor_id integer,
+    read boolean,
+    body text,
+    conversation_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
+
 
 --
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -133,6 +234,20 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscriptions_id_seq'::regclass);
 
 
@@ -141,6 +256,22 @@ ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscription
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: conversations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY conversations
+    ADD CONSTRAINT conversations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
 
 
 --
@@ -157,6 +288,34 @@ ALTER TABLE ONLY subscriptions
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: conversations_gin_users; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX conversations_gin_users ON conversations USING gin (users);
+
+
+--
+-- Name: index_conversations_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_conversations_on_updated_at ON conversations USING btree (updated_at);
+
+
+--
+-- Name: index_messages_on_conversation_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_messages_on_conversation_id ON messages USING btree (conversation_id);
+
+
+--
+-- Name: index_messages_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_messages_on_created_at ON messages USING btree (created_at);
 
 
 --
@@ -212,3 +371,7 @@ INSERT INTO schema_migrations (version) VALUES ('20121206214210');
 INSERT INTO schema_migrations (version) VALUES ('20121207191426');
 
 INSERT INTO schema_migrations (version) VALUES ('20121218131734');
+
+INSERT INTO schema_migrations (version) VALUES ('20121218221752');
+
+INSERT INTO schema_migrations (version) VALUES ('20121219094142');

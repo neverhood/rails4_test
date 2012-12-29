@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "user-email-#{n}@gmail.com" }
     password 'qwerty123'
 
+    sequence(:name) { |n| "User-#{n} Name" }
     male true
   end
 end

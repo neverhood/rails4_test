@@ -38,4 +38,8 @@ module ApplicationHelper
     user_signed_in? and not profile_owner?
   end
 
+  def user_name user
+    user.name || user.login
+  end
+
 end

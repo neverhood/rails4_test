@@ -10,8 +10,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   include Subscribable
+  include Conversational
 
   validates :male, presence: true
+  validates :name, presence: true
   validates :login, uniqueness: true, length: { within: (3..20) }, allow_nil: true, format: { with: /\A[A-Za-z]+[A-Za-z_-]*[A-Za-z]+\z/ }
 
   # This scope is to be used on collections to avoid loading unneeded attributes

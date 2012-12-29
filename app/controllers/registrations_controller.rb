@@ -4,6 +4,6 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def permissions
-    devise_permitted [ :male, :login, :details, :email, :password, :password_confirmation, :password_current ]
+    devise_permitted [ :male, :login, :details, :email, :name, :password, :password_confirmation, :password_current ]
   end
 end

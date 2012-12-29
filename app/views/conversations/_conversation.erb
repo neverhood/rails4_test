@@ -1,0 +1,21 @@
+<% interlocutor = conversation.interlocutor_of(current_user) %>
+<% message      = conversation.last_message %>
+
+<%# There doesn't seem to be a conventional way to preload those %>
+
+<div class='conversation' id='conversation-<%= conversation.id %>'>
+
+  <div class='interlocutor-photo'>
+    <%= link_to image_tag(interlocutor.avatar.thumb.url), user_path(interlocutor) %>
+  </div>
+
+  <div class='message-info'>
+    <div class='interlocutor-name'> <%= link_to user_name(interlocutor), user_path(interlocutor) %> </div>
+    <div class='message-timestamp'> <%= l message.created_at, :format => :short %> </div>
+  </div>
+
+  <div class='message-body'>
+    <%= link_to truncate(message.body, length: 150), conversation_path(conversation) %>
+  </div>
+
+</div>

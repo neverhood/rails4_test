@@ -1,0 +1,113 @@
+// Place all the styles related to the conversations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body#profiles {
+    div#new-message-modal {
+        form#send-message {
+            margin-left: 28px;
+        }
+
+        a#link-to-conversation {
+            display: inline-block;
+            margin-top: 5px;
+            float: left;
+        }
+    }
+}
+
+body#conversations {
+
+    /* Index */
+    div#conversations {
+
+        div.conversation {
+            div.interlocutor-photo {
+                float: left;
+                margin: 0 25px;
+            }
+
+            div.message-info {
+                float: left;
+                margin: 25px;
+            }
+
+            div.message-body {
+                float: left;
+                margin: 25px;
+
+                @extend .span6;
+                a {
+                    @extend %non-decorated;
+                }
+            }
+        }
+
+    }
+
+    /* Show */
+
+    div#conversation {
+
+        div#history {
+            height: 500px;
+            margin: 0 auto;
+            overflow: auto;
+
+            @extend .span9;
+        }
+
+        div#new-conversation-message-container {
+            width: 400px;
+            margin: 10px auto;
+        }
+
+        div.messages-group {
+            min-height: 120px;
+            clear: left;
+
+            hr {
+                clear: both;
+            }
+        }
+
+        div.messages-group-author {
+            a { @extend %non-decorated; }
+
+            @extend .pull-left;
+            width: 104px;
+            height: 120px;
+            margin-bottom: 15px;
+
+            div.author-avatar {
+            }
+
+            div.author-name {
+                text-align: center;
+                line-height: 20px;
+                font-size: 13px;
+
+                text-decoration: none;
+            }
+        }
+
+        div.message {
+            font-size: 13px;
+            margin-left: 160px;
+            margin-top: 5px;
+            padding: 5px;
+
+            @include border-radius(5px);
+            @extend .span6;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        div.message.unread {
+            background-color: lighten($blue, 50%);
+        }
+    }
+
+}

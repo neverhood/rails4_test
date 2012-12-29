@@ -1,0 +1,17 @@
+<%= conversation_page_header %>
+
+<div id='conversation' data-last-page='<%= MessageGroup.last_page?(@conversation.id, 1) %>' data-id='<%= @conversation.id %>'>
+  <div id='history'>
+    <%= render partial: 'message_group', collection: @message_groups %>
+  </div>
+
+  <div id='new-conversation-message-container'>
+    <%= simple_form_for @conversation.messages.new, remote: true, html: { id: 'new-conversation-message' } do |form| %>
+      <%= form.input :body, :as => :text, :label => false, :input_html => { class: 'span5', rows: 6 } %>
+      <%= form.input :conversation_id, :as => :hidden, :input_html => { value: @conversation.id } %>
+      <%= form.input :interlocutor_id, :as => :hidden, :input_html => { value: @interlocutors.first.id } %>
+
+      <%= form.submit t('.submit'), class: 'btn btn-info', data: { disable_with: t('common.please_wait') } %>
+    <% end %>
+  </div>
+</div>

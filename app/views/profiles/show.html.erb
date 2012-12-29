@@ -13,7 +13,14 @@
   <%= render 'user_avatars/options' %>
 </div>
 
+<hr />
 <%= render 'subscriptions/options' %>
+<%= render 'conversations/options' %>
+
+<%- if profile_owner? %>
+  <hr />
+  <%= link_to t('.conversations'), conversations_path %>
+<% end %>
 
 <%- if profile_owner? %>
   <%= subheader t('.direct_subscriptions') %>
@@ -22,5 +29,8 @@
 <% end %>
 
 
+<%# hidden modals %>
+
 <%= render 'user_avatars/new_photo_modal' %>
 <%= render 'user_avatars/crop_photo_modal' %>
+<%= render 'conversations/new_message_modal' %>

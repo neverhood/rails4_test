@@ -36,5 +36,6 @@ Licemerov::Application.configure do
   config.active_support.deprecation = :stderr
 
   # Use the synchronous queue to run jobs immediately.
-  config.queue = ActiveSupport::SynchronousQueue.new
+
+  # config.queue = ActiveSupport::SynchronousQueue.new
 end

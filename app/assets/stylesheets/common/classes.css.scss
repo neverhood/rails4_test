@@ -8,6 +8,12 @@
 
 .error-text { color: $errorText; }
 
+div.errors-container span {
+    @extend .error-text;
+
+    display: block;
+}
+
 div.heads-up {
     @extend .alert;
     @extend .alert-info;

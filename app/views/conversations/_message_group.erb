@@ -1,0 +1,19 @@
+<div class='messages-group'>
+  <div class='messages-group-author'>
+    <div class='author-avatar'>
+      <%= link_to image_tag(message_group.user.avatar.url(:thumb)), user_path(message_group.user) %>
+    </div>
+
+    <div class='author-name'>
+      <%= link_to truncate(message_group.user.name, length: 20), user_path(message_group.user) %>
+    </div>
+  </div>
+
+  <% message_group.group.each do |message| %>
+    <div class='message <%= message.read?? 'read' : 'unread' %>'>
+      <%= simple_format message.body %>
+    </div>
+  <% end %>
+
+  <hr />
+</div>

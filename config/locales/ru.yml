@@ -80,6 +80,7 @@ ru:
       edit: 'Редактировать информацию'
       edit_registration: 'Редактировать регистрационные данные'
       direct_subscriptions: 'Люди, на которых Вы подписаны'
+      conversations: 'Мои диалоги'
 
   user_details:
     edit:
@@ -104,6 +105,19 @@ ru:
       subscribe: 'Подписаться'
       unsubscribe: 'Отписаться'
 
+  conversations:
+    to_dialog: 'К диалогу'
+    index:
+      header: 'Мои диалоги'
+    show:
+      with: 'Диалог с'
+      submit: 'Отправить'
+    options:
+      send_message: 'Отправить сообщение'
+    new_message_modal:
+      header: 'Отправка сообщения'
+      submit: 'Отправить'
+
   # Activerecord
   activerecord:
     models:
@@ -116,6 +130,8 @@ ru:
         name: 'Имя'
         login: 'Логин'
         avatar: 'Фото'
+      message:
+        body: 'Тело сообщения'
 
     errors:
       models:

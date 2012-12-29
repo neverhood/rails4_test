@@ -32,6 +32,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 group :development, :test do
+  gem 'meta_request'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'zeus'

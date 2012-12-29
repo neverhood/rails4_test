@@ -16,4 +16,8 @@ Licemerov::Application.routes.draw do
   # Subscriptions
   resource :subscriptions, only: [ :create, :destroy, :index ]
   get '/subscriptions' => 'subscriptions#index', as: 'subscriptions'
+
+  # Conversations
+  resources :conversations, only: [ :destroy, :show, :index ]
+  resources :messages,      only: [ :create, :destroy ]
 end

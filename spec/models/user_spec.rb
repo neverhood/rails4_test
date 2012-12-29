@@ -9,6 +9,7 @@ describe User do
     it { should ensure_length_of(:login).is_at_least(3).is_at_most(20) }
     it { should validate_uniqueness_of(:email) }
     it { should validate_presence_of(:male)    } # boolean
+    it { should validate_presence_of(:name)    }
 
     describe 'Login format validation' do
       before { user.should be_valid }

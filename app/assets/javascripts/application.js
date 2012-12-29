@@ -24,10 +24,13 @@
 //= require user_details
 //= require user_avatars
 //= require subscriptions
+//= require conversations
 //= require profiles
 //= require welcome
 //= require_self
 //
+
+$.ajaxSettings.dataType = 'json';
 
 $(document).on('ready page:load', function() {
     $.api.controller     = this.body.id;
