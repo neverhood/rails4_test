@@ -78,6 +78,42 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: albums; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE albums (
+    id integer NOT NULL,
+    photos_count integer DEFAULT 0,
+    name character varying(255),
+    transliterated_name character varying(255),
+    user_id integer,
+    description text,
+    conver_photo_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: albums_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE albums_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: albums_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE albums_id_seq OWNED BY albums.id;
+
+
+--
 -- Name: conversations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -234,6 +270,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY albums ALTER COLUMN id SET DEFAULT nextval('albums_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
 
 
@@ -256,6 +299,14 @@ ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscription
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: albums_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY albums
+    ADD CONSTRAINT albums_pkey PRIMARY KEY (id);
 
 
 --
@@ -295,6 +346,20 @@ ALTER TABLE ONLY users
 --
 
 CREATE INDEX conversations_gin_users ON conversations USING gin (users);
+
+
+--
+-- Name: index_albums_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_albums_on_user_id ON albums USING btree (user_id);
+
+
+--
+-- Name: index_albums_on_user_id_and_transliterated_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_albums_on_user_id_and_transliterated_name ON albums USING btree (user_id, transliterated_name);
 
 
 --
@@ -375,3 +440,5 @@ INSERT INTO schema_migrations (version) VALUES ('20121218131734');
 INSERT INTO schema_migrations (version) VALUES ('20121218221752');
 
 INSERT INTO schema_migrations (version) VALUES ('20121219094142');
+
+INSERT INTO schema_migrations (version) VALUES ('20121229220322');

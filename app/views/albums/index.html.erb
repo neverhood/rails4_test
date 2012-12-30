@@ -1,0 +1,13 @@
+<%= page_header t('.header', name: @user.name) %>
+
+<%- if profile_owner? %>
+  <%= link_to t('.new_album'), '#', id: 'new-album' %>
+<% end %>
+
+<div class='row'>
+  <div id='albums'> <%= render @albums %> </div>
+</div>
+
+<%- if profile_owner? %>
+  <%= render 'albums/modal' %>
+<% end %>

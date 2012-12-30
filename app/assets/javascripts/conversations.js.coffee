@@ -3,7 +3,7 @@ $.api.conversations = {
 
     disableSubmit: (inputSelector, form) ->
         input = $( inputSelector )
-        form.find('input[type="submit"]').attr('disabled', input.val().length == 0)
+        form.find('input[type="submit"]').attr('disabled', input.val().trim().length == 0)
 
     delayDisableSubmit: (form) ->
         setTimeout -> form.find('input[type="submit"]').attr('disabled', true)

@@ -11,6 +11,8 @@ describe User do
     it { should validate_presence_of(:male)    } # boolean
     it { should validate_presence_of(:name)    }
 
+    it { should have_many(:albums) }
+
     describe 'Login format validation' do
       before { user.should be_valid }
 

@@ -81,6 +81,18 @@ ru:
       edit_registration: 'Редактировать регистрационные данные'
       direct_subscriptions: 'Люди, на которых Вы подписаны'
       conversations: 'Мои диалоги'
+      albums: '%{name}: Альбомы'
+      my_albums: 'Мои альбомы'
+  albums:
+    index:
+      header: '%{name}: Альбомы'
+      new_album: 'Добавить альбом'
+    edit:
+      header: 'Редактирование альбома'
+    modal:
+      header: 'Новый альбом'
+    album:
+      edit: 'Редактировать альбом'
 
   user_details:
     edit:
@@ -121,6 +133,8 @@ ru:
   # Activerecord
   activerecord:
     models:
+      user: 'Пользователь'
+      album: 'Альбом'
 
     attributes:
       user:
@@ -132,6 +146,9 @@ ru:
         avatar: 'Фото'
       message:
         body: 'Тело сообщения'
+      album:
+        name: 'Название'
+        description: 'Описание'
 
     errors:
       models:
@@ -141,3 +158,7 @@ ru:
               blank: 'не выбран'
             login:
               invalid: 'Имеет неверное значение: разрешены только латинские буквы (A-Z) и символы "-", "_". Логин должен начинаться и заканчиваться на латинскую букву'
+        album:
+          attributes:
+            name:
+              taken: 'У Вас уже есть альбом с таким названием'

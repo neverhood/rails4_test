@@ -13,13 +13,13 @@
   <%= render 'user_avatars/options' %>
 </div>
 
-<hr />
 <%= render 'subscriptions/options' %>
 <%= render 'conversations/options' %>
 
 <%- if profile_owner? %>
-  <hr />
   <%= link_to t('.conversations'), conversations_path %>
+  <br />
+  <%= link_to t(profile_owner?? '.my_albums' : '.albums'), user_albums_path(@user) %>
 <% end %>
 
 <%- if profile_owner? %>
@@ -27,7 +27,6 @@
 
   <%= render 'subscriptions/direct_subscriptions' %>
 <% end %>
-
 
 <%# hidden modals %>
 

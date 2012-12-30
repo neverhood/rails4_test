@@ -25,6 +25,7 @@
 //= require user_avatars
 //= require subscriptions
 //= require conversations
+//= require albums
 //= require profiles
 //= require welcome
 //= require_self

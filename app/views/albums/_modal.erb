@@ -1,0 +1,23 @@
+<div id='new-album-modal' class='modal hide fade'>
+  <div class='modal-header'>
+    <strong><%= t '.header' %></strong>
+
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+
+  <div class='modal-body'>
+    <%= simple_form_for @album, url: albums_path, remote: true, html: { method: 'post', id: 'new-album' } do |form| %>
+      <%= form.input :name %>
+      <%= form.input :description, :as => :text, input_html: { class: 'span5', rows: 6 } %>
+
+      <hr />
+
+      <%= form.submit t('common.submit'), class: 'btn btn-info', disabled: true %>
+    <% end %>
+  </div>
+
+  <div class='modal-footer'>
+    <button class="btn" data-dismiss="modal" aria-hidden="true"> <%= t 'common.close' %> </button>
+  </div>
+</div>
+

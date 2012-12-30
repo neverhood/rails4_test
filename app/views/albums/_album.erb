@@ -1,0 +1,24 @@
+<div class='album' data-id='<%= album.id %>'>
+
+  <%- if profile_owner? %>
+    <%= link_to edit_album_path(album), class: 'hidden edit-album-link', title: t('.edit') do %>
+      <div class='edit-album-icon'> <i class='icon-pencil'></i> </div>
+    <% end %>
+  <% end %>
+
+  <%= link_to user_album_path(user_id: @user.id, album_name: album.transliterated_name) do %>
+    <div class='album-cover'>
+      <%- if album.cover.present? %>
+        <%= link_to image_tag(album.cover.photo.url(:thumb)), user_album_path(@user, album) %>
+      <% else %>
+        <i class='icon-camera default-cover'></i>
+      <% end %>
+    </div>
+
+    <div class='album-info'>
+      <span class='album-name'><%= truncate(album.name, length: 25) %></span>
+      <span class='album-photos-count'> <i class='icon-camera'></i><%= album.photos_count %> </span>
+    </div>
+  <% end %>
+
+</div>

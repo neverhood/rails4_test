@@ -20,4 +20,9 @@ Licemerov::Application.routes.draw do
   # Conversations
   resources :conversations, only: [ :destroy, :show, :index ]
   resources :messages,      only: [ :create, :destroy ]
+
+  # Albums
+  get '/profiles/:user_id/albums' => 'albums#index', as: 'user_albums'
+  get '/profiles/:user_id/albums/:album_name' => 'albums#show', as: 'user_album'
+  resources :albums, only: [ :create, :update, :destroy, :new, :edit ]
 end

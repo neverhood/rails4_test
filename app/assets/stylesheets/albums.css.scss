@@ -1,0 +1,70 @@
+// Place all the styles related to the albums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body#albums {
+    div#albums {
+        @extend .span12;
+    }
+
+    div.album {
+        a { text-decoration: none }
+
+        @extend .pull-left;
+
+        width: 270px;
+        height: 185px;
+        margin: 15px 10px;
+
+        a.edit-album-link {
+            color: white;
+            text-decoration: none;
+        }
+
+        div.edit-album-icon {
+            padding: 3px 7px;
+            text-align: center;
+            background: black;
+            @include opacity(50);
+            @include border-radius(5px);
+
+            position: absolute;
+            margin-left: 245px;
+
+            &:hover {
+                @include opacity(60);
+            }
+        }
+
+        div.album-cover {
+            text-align: center;
+            height: 100%;
+
+            i.default-cover {
+                font-size: 100px;
+            }
+        }
+
+        div.album-info {
+            margin-top: -20px;
+            background: black;
+            color: white;
+            font-weight: bold;
+            padding: 1px 0;
+
+            @include opacity(50);
+
+            span.album-name {
+                margin: 0 5px;
+            }
+
+            span.album-photos-count {
+                @extend .pull-right;
+                margin-right: 2px;
+
+                i {
+                    margin: 0 2px;
+                }
+            }
+        }
+    }
+}

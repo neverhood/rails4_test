@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 1d38c82b7ad98d64f5ee45c0e08d5826e14d98c0
+  revision: 257b3f63c4c73e369d789c7b10653398df7390f7
   specs:
     actionmailer (4.0.0.beta)
       actionpack (= 4.0.0.beta)
@@ -155,7 +155,7 @@ GEM
     libwebsocket (0.1.7.1)
       addressable
       websocket
-    listen (0.6.0)
+    listen (0.7.0)
     lumberjack (1.0.2)
     mail (2.5.3)
       i18n (>= 0.4.0)
