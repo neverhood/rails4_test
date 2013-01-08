@@ -5,7 +5,38 @@
 <% end %>
 
 <div class='row'>
-  <div id='albums'> <%= render @albums %> </div>
+  <div id='albums'>
+    <%# Default album: All photos %>
+
+    <div class='default-album'>
+      <%- if profile_owner? %>
+        <%= link_to edit_photos_path, class: 'hidden edit-album-link', title: t('.edit') do %>
+          <div class='edit-album-icon'> <i class='icon-pencil'></i> </div>
+        <% end %>
+      <% end %>
+
+      <%= link_to user_photos_path(@user) do %>
+        <div class='album-cover'>
+          <%- if @user.photos.without_album.any? %>
+            <%= image_tag @user.photos.without_album.first.image.thumb.url %>
+          <% else %>
+            <i class='icon-camera default-cover'></i>
+          <% end %>
+        </div>
+
+        <div class='album-info'>
+          <span class='album-name'> <%= t '.default_album' %> </span>
+          <span class='album-photos-count'> <i class='icon-camera'></i><%= @user.photos.without_album.count %> </span>
+        </div>
+      <% end %>
+    </div>
+
+    <hr class='album-sections-separator' />
+
+    <div id='user-created-albums'>
+      <%= render @albums %>
+    </div>
+  </div>
 </div>
 
 <%- if profile_owner? %>

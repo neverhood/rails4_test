@@ -6,13 +6,17 @@ body#albums {
         @extend .span12;
     }
 
-    div.album {
+    hr.album-sections-separator {
+        clear: both;
+    }
+
+    div.album, div.default-album {
         a { text-decoration: none }
 
         @extend .pull-left;
 
-        width: 270px;
-        height: 185px;
+        width: 200px;
+        height: 200px;
         margin: 15px 10px;
 
         a.edit-album-link {
@@ -24,11 +28,11 @@ body#albums {
             padding: 3px 7px;
             text-align: center;
             background: black;
-            @include opacity(50);
+            @include opacity(60);
             @include border-radius(5px);
 
             position: absolute;
-            margin-left: 245px;
+            margin: 10px 0 0 165px;
 
             &:hover {
                 @include opacity(60);

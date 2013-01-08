@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :album do
     association :user
 
-    photos_count 0
     name 'Photo Album'
   end
 

@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :login, uniqueness: true, length: { within: (3..20) }, allow_nil: true, format: { with: /\A[A-Za-z]+[A-Za-z_-]*[A-Za-z]+\z/ }
 
-  has_many :albums
+  has_many :albums, :dependent => :destroy
+  has_many :photos, :dependent => :destroy
 
   # This scope is to be used on collections to avoid loading unneeded attributes
   scope :previews, -> amount = 10 { select('users.id', 'users.name', 'users.male', 'users.avatar', 'users.details').limit(amount) }

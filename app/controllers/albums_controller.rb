@@ -12,6 +12,15 @@ class AlbumsController < ApplicationController
     @album  = current_user.albums.new if ( user_signed_in? and @user.id == current_user.id )
   end
 
+  def show
+    @photos = @album.photos.with_album_name.page( params[:page] ).per(50)
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: { photos: render_to_string(partial: 'photos/photo', collection: @photos), last: @photos.last_page? } }
+    end
+  end
+
   def new
     @album = current_user.albums.new
   end
@@ -31,10 +40,14 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
+    @photos = @album.photos.with_album_name.page( params[:page] ).per(50)
+    @albums = current_user.albums.select([:name, :id])
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: { entries: render_to_string(partial: 'photos/edit', collection: @photos, as: :photo), last: @photos.last_page? } }
+    end
   end
 
   def update
@@ -44,12 +57,15 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
+    @album.destroy
+
+    redirect_to user_albums_path(current_user), notice: I18n.t('flash.albums.destroy.notice')
   end
 
   private
 
   def find_album!
-    @album = @user.albums.where(transliterated_name: params[:album_name]).first
+    @album = @user.albums.find_by(transliterated_name: params[:album_name])
     render_not_found! if @album.nil?
   end
 

@@ -3,3 +3,8 @@ ru:
     subscriptions:
       create: '<strong class="notification"> Подписка оформлена </strong>'
       destroy: '<strong class="notification"> Подписка отменена </strong>'
+    albums:
+      destroy:
+        notice: 'Альбом удален, фотографии перемещены в общую папку "Все фотографии"'
+      update:
+        notice: 'Альбом обновлен'

@@ -1,10 +1,29 @@
 <%= page_header %>
 
 <div id='edit-album'>
+  <%= link_to t('.my_albums'), user_albums_path(current_user) %>
+  <hr />
+
   <%= simple_form_for @album, url: album_path(@album), html: { method: 'put', class: 'form form-horizontal' } do |form| %>
     <%= form.input :name %>
     <%= form.input :description, :as => :text, input_html: { class: 'span5', rows: 6 } %>
 
     <%= form.submit t('common.submit'), data: { disable_with: t('common.please_wait') } %>
   <% end %>
+
+  <hr />
+
+  <%= link_to t('.destroy'), album_path(@album), method: 'delete', class: 'btn btn-danger', data: { confirm: t('.confirm') } %>
+
+  <hr />
+
+  <div id='edit-photos' data-url='<%= edit_album_path(@album) %>' data-page='1' data-last-page='<%= @photos.last_page? %>'>
+    <%= render partial: 'photos/edit', collection: @photos, as: :photo %>
+  </div>
+
 </div>
+
+<div id='available-albums' class='hidden'>
+  <%= @albums.to_json %>
+</div>
+

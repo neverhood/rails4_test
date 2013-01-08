@@ -1,0 +1,9 @@
+<div class='photo' data-id='<%= photo.id %>'>
+  <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), class: 'gallery-item' %>
+
+  <div class='hidden photo-meta'>
+    <div class='photo-description'>
+      <%= photo.description %>
+    </div>
+  </div>
+</div>

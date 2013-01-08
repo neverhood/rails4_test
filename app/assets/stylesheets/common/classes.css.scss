@@ -7,6 +7,11 @@
 .absolute { position: absolute; }
 
 .error-text { color: $errorText; }
+.success-text { color: $successText; }
+
+hr.clear-separator {
+    clear: both;
+}
 
 div.errors-container span {
     @extend .error-text;

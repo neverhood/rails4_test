@@ -1,0 +1,13 @@
+<div id='edit-album-photos'>
+  <%= link_to t('.my_albums'), user_albums_path(current_user) %>
+  <hr />
+
+  <div id='edit-photos' data-url='<%= edit_photos_path %>' data-page='1' data-last-page='<%= @photos.last_page? %>'>
+    <%= render partial: 'edit', collection: @photos, as: :photo %>
+  </div>
+
+  <div id='available-albums' class='hidden'>
+    <%= @albums.to_json %>
+  </div>
+
+</div>

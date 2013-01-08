@@ -1,4 +1,23 @@
-<%= page_header @album.name %>
+<%= page_header @album.name, @album.description %>
 
 <div id='album'>
+
+  <%= link_to((profile_owner?? t('.my_albums') : t('.albums')), user_albums_path(@user)) %>
+  <%= render 'photos/form' %>
+
+  <%- if profile_owner? %>
+    <%= link_to t('.edit'), edit_album_path(@album), class: 'btn btn-success' %>
+    <hr class='clear-separator' />
+  <% end %>
+
+  <div id='album-photos' data-url='<%= user_album_path(user_id: @user.id, album_name: @album.transliterated_name) %>' data-page='1' data-last-page='<%= @photos.last_page? %>'>
+    <%- if @album.photos.any? %>
+      <%= render @photos %>
+    <% else %>
+      <%= no_results %>
+    <% end %>
+  </div>
+
+  <%= render 'photos/gallery_modal' %>
+
 </div>

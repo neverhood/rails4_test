@@ -6,6 +6,7 @@ gem 'rails', github: 'rails/rails'
 gem 'journey', github: 'rails/journey'
 gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 
+gem 'thin'
 gem 'sqlite3'
 
 # Gems used only for assets and not required
@@ -22,6 +23,8 @@ group :assets do
 
   gem 'bootstrap-sass'
   gem 'font-awesome-sass-rails'
+  gem 'jquery-fileupload-rails'
+  gem 'bootstrap-addons-rails'
 end
 
 gem 'jquery-rails'

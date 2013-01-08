@@ -35,4 +35,17 @@ describe 'Albums' do
     end
   end
 
+  describe 'Destroy' do
+    let(:album) { FactoryGirl.create(:album, user: user) }
+
+    it 'destroys the album' do
+      visit edit_album_path(album)
+
+      click_link I18n.t('albums.edit.destroy')
+
+      current_path.should == user_albums_path(user)
+      user.albums.count.should be_zero
+    end
+  end
+
 end

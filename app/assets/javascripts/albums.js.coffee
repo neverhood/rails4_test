@@ -24,7 +24,7 @@ $.api.albums = {
                 modal.modal('hide').find('input#album_name, textarea#album_description').val('')
                 _this.delayDisableSubmit(modal)
 
-                $('div#albums').prepend response.album
+                $('div#user-created-albums').prepend response.album
             else
                 $('input#album_name').after("<span class='error-text'> #{ response.errors.name.join('<br />') } </span>")
         ).
@@ -34,6 +34,13 @@ $.api.albums = {
             find('input#album_name').bind 'keyup', ->
                 $('form#new-album input[type="submit"]').attr('disabled', this.value.trim().length == 0)
 
-        $('div#albums').on 'hover', 'div.album', ->
-            $(this).find('a.edit-album-link').toggleClass('hidden')
+        $('div#albums').on('mouseenter', 'div.album, div.default-album', ->
+            $(this).find('a.edit-album-link').removeClass('hidden')
+        )
+        $('div#albums').on('mouseleave', 'div.album, div.default-album', ->
+            $(this).find('a.edit-album-link').addClass('hidden')
+        )
+
+        if $.api.action == 'show' or $.api.action == 'edit'
+            $.api.photos.init()
 }

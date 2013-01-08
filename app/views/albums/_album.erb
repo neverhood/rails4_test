@@ -9,7 +9,7 @@
   <%= link_to user_album_path(user_id: @user.id, album_name: album.transliterated_name) do %>
     <div class='album-cover'>
       <%- if album.cover.present? %>
-        <%= link_to image_tag(album.cover.photo.url(:thumb)), user_album_path(@user, album) %>
+        <%= image_tag(album.cover.image.url(:thumb)) %>
       <% else %>
         <i class='icon-camera default-cover'></i>
       <% end %>
@@ -17,7 +17,7 @@
 
     <div class='album-info'>
       <span class='album-name'><%= truncate(album.name, length: 25) %></span>
-      <span class='album-photos-count'> <i class='icon-camera'></i><%= album.photos_count %> </span>
+      <span class='album-photos-count'> <i class='icon-camera'></i><%= album.photos.count %> </span>
     </div>
   <% end %>
 

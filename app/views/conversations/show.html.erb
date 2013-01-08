@@ -1,6 +1,6 @@
 <%= conversation_page_header %>
 
-<div id='conversation' data-last-page='<%= MessageGroup.last_page?(@conversation.id, 1) %>' data-id='<%= @conversation.id %>'>
+<div id='conversation' data-last-page='<%= MessageGroup.last_page?(@conversation.id, 1) %>' data-page='1' data-id='<%= @conversation.id %>'>
   <div id='history'>
     <%= render partial: 'message_group', collection: @message_groups %>
   </div>

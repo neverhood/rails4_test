@@ -88,7 +88,7 @@ CREATE TABLE albums (
     transliterated_name character varying(255),
     user_id integer,
     description text,
-    conver_photo_id integer,
+    cover_photo_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -177,6 +177,40 @@ CREATE SEQUENCE messages_id_seq
 --
 
 ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
+
+
+--
+-- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE photos (
+    id integer NOT NULL,
+    user_id integer,
+    album_id integer,
+    description text,
+    image character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE photos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
 
 
 --
@@ -291,6 +325,13 @@ ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscriptions_id_seq'::regclass);
 
 
@@ -323,6 +364,14 @@ ALTER TABLE ONLY conversations
 
 ALTER TABLE ONLY messages
     ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY photos
+    ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
 
 
 --
@@ -442,3 +491,5 @@ INSERT INTO schema_migrations (version) VALUES ('20121218221752');
 INSERT INTO schema_migrations (version) VALUES ('20121219094142');
 
 INSERT INTO schema_migrations (version) VALUES ('20121229220322');
+
+INSERT INTO schema_migrations (version) VALUES ('20121230165514');

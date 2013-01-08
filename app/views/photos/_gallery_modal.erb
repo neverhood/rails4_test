@@ -1,0 +1,23 @@
+<div id='gallery-modal' class='modal modal-gallery hide fade' tabindex='-1'>
+  <div class='modal-header'>
+    <a class='close' data-dismiss='modal'>&times;</a>
+    <%= inline_heads_up!(t '.navigation') %>
+
+    <div id='current-images-progress'>
+      <span id='current-image-index'></span> <%= t '.out_of' %> <span id='current-images-count'><%= @photos.total_count %></span>
+    </div>
+  </div>
+
+  <div class='modal-body'>
+    <div id='gallery-modal-image-container'>
+      <div id='gallery-modal-image'></div>
+    </div>
+
+    <div id='gallery-modal-meta-container'> </div>
+  </div>
+
+  <div class='modal-footer'>
+    <button class='btn btn-danger' data-dismiss='modal' aria-hidden='true'> <%= t 'common.close' %> </button>
+  </div>
+</div>
+

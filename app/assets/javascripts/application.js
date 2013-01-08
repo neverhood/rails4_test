@@ -15,8 +15,12 @@
 //= require underscore
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-fileupload/basic
 //
-//= require bootstrap-modal
+//= require bootstrap
+//= require bootstrap-gallery
+//= require editable
+//= require editable-rails
 //
 //= require api/api
 //
@@ -26,12 +30,25 @@
 //= require subscriptions
 //= require conversations
 //= require albums
+//= require photos
 //= require profiles
 //= require welcome
 //= require_self
 //
 
 $.ajaxSettings.dataType = 'json';
+
+function nearBottomOfPage() {
+    return scrollDistanceFromBottom() < 400;
+}
+
+function scrollDistanceFromBottom() {
+    return pageHeight() - (window.pageYOffset + window.innerHeight);
+}
+
+function pageHeight() {
+    return Math.max(document.body.scrollHeight, document.body.offsetHeight);
+}
 
 $(document).on('ready page:load', function() {
     $.api.controller     = this.body.id;
@@ -42,4 +59,6 @@ $(document).on('ready page:load', function() {
         $.api.currentUser = $.parseJSON( $('div#current-user-json') )
 
     if ( typeof $.api[ $.camelCase($.api.controller) ] === 'object' ) $.api[ $.camelCase($.api.controller) ].init();
+
+    $.api.loading = false
 });

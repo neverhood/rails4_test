@@ -25,4 +25,10 @@ Licemerov::Application.routes.draw do
   get '/profiles/:user_id/albums' => 'albums#index', as: 'user_albums'
   get '/profiles/:user_id/albums/:album_name' => 'albums#show', as: 'user_album'
   resources :albums, only: [ :create, :update, :destroy, :new, :edit ]
+
+  # Photos
+  get '/profiles/:user_id/photos' => 'photos#index', as: 'user_photos'
+  resources :photos, only: [ :create, :update, :destroy, :show ] do
+    get :edit, :on => :collection
+  end
 end

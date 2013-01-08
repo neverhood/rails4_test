@@ -14,28 +14,34 @@ $.api.conversations = {
 
             history.scrollTop( history[0].scrollHeight )
 
-    currentPage: 1,
-    lastPage: $('div#conversation').attr('lastPage') == 'true'
+    currentPage: ->
+        parseInt $('div#conversation').attr('data-page')
+    lastPage: ->
+        $('div#conversation').attr('data-last-page') == 'true'
     init: ->
         _this = this
 
         _this.scrollHistoryDown()
         $('body').scrollTop 10000
 
+        $(document).bind 'page:change', ->
+            $('div#history').unbind 'scroll'
+
         $('div#history').bind 'scroll', ->
-            if $.api.loading or $.api.conversations.lastPage
+            if $.api.loading or $.api.conversations.lastPage()
                 return false
 
             if this.scrollTop < 400
-                url = "/conversations/#{ $('div#conversation').attr('data-id') }?page=#{ $.api.conversations.currentPage + 1 }"
+                url = "/conversations/#{ $('div#conversation').attr('data-id') }?page=#{ $.api.conversations.currentPage() + 1 }"
 
                 $.api.loading = true
                 $.getJSON url, (data) ->
                     $('div#history').prepend data.groups
 
                     $.api.loading = false
-                    $.api.conversations.currentPage++
-                    $.api.conversations.lastPage = data.last
+                    conversation = $('div#conversation')
+                    conversation.attr('data-page', $.api.conversations.currentPage() + 1)
+                    conversation.attr('data-last-page', data.last)
 
 
         $('a#send-message').bind 'click', (event) ->

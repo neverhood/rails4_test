@@ -1,0 +1,24 @@
+<div id='photo-uploading-container'>
+  <h3> <%= t '.upload_photos' %> </h3>
+
+  <%= simple_form_for Photo.new, html: { id: 'upload-photos', multipart: true, data: { alert: t('.alert') } } do |form| %>
+    <div id='new-photo-button'>
+      <input type="button" value="<%= t '.browse' %>">
+
+      <%- if @album.present? %>
+        <%= form.input :album_id, as: :hidden, input_html: { value: @album.id } %>
+      <% end %>
+
+      <%= form.input :image, :as => :file, :label => false, :input_html => { multiple: true, name: 'photo[image]' } %>
+    </div>
+
+  <% end %>
+
+  <div id='file-upload-progress' class='hidden photo-upload-progress-bar'>
+    <div class='filename'></div>
+
+    <div class='progress progress-striped active'> <div class="bar"></div> </div>
+  </div>
+</div>
+
+<hr class='clear-separator' />

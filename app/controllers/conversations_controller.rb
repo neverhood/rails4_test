@@ -36,7 +36,7 @@ class ConversationsController < ApplicationController
   end
 
   def find_conversation!
-    @conversation = current_user.conversations.where(id: params[:id]).first
+    @conversation = current_user.conversations.find_by(id: params[:id])
 
     render_not_found! if @conversation.nil?
   end

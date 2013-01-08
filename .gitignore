@@ -19,4 +19,5 @@ tags
 .rvmrc
 
 /public/uploads/user/avatar/*
+/public/uploads/photo/image/*
 /public/uploads/tmp/*
