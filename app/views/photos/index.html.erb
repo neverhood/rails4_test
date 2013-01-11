@@ -9,11 +9,11 @@
       <%= link_to t('.arrange'), edit_photos_path, class: 'btn btn-success' %>
       <hr class='clear-separator' />
     <% end %>
-
-    <div id='photos-container' data-url='<%= user_photos_path(@user) %>' data-page='1' data-last-page='<%= @photos.last_page? %>'><%= render @photos %></div>
   <% else %>
     <%= no_results %>
   <% end %>
+
+  <div id='photos-container' data-url='<%= user_photos_path(@user) %>' data-page='1' data-last-page='<%= @photos.last_page? %>'><%= render @photos %></div>
 </div>
 
 <%= render 'gallery_modal' %>

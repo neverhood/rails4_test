@@ -66,7 +66,8 @@ class MessagesController < ApplicationController
   end
 
   def same_message_group?
-    Message.where(['id < ?', @message.id]).order('id DESC').limit(1).first.user_id == current_user.id
+    messages_scope = Message.where(['id < ?', @message.id]).order('id DESC').limit(1)
+    messages_scope.any?? (messages_scope.first.user_id == current_user.id) : false
   end
 
 end

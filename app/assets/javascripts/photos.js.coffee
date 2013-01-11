@@ -51,10 +51,7 @@ $.api.photos = {
             dataType: 'json',
             maxFileSize: 5000000,
             done: (event, response) ->
-                if $.api.action == 'index'
-                    $('div#photos-container').prepend response.result.photo
-                else
-                    $('div#album-photos').prepend response.result.photo
+                $.api.photos.container().prepend response.result.photo
 
                 $('div#photo-uploading-container').find('#' + response.identifier ).remove()
                 $('div.no-results').remove()

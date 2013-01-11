@@ -83,7 +83,6 @@ SET default_with_oids = false;
 
 CREATE TABLE albums (
     id integer NOT NULL,
-    photos_count integer DEFAULT 0,
     name character varying(255),
     transliterated_name character varying(255),
     user_id integer,

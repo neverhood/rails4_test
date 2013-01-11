@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   include Subscribable
   include Conversational
 
-  validates :male, presence: true
+  validates :male, inclusion: { in: [true, false] }
   validates :name, presence: true
   validates :login, uniqueness: true, length: { within: (3..20) }, allow_nil: true, format: { with: /\A[A-Za-z]+[A-Za-z_-]*[A-Za-z]+\z/ }
 

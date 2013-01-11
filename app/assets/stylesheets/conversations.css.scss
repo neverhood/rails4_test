@@ -50,7 +50,7 @@ body#conversations {
     div#conversation {
 
         div#history {
-            height: 500px;
+            max-height: 500px;
             margin: 0 auto;
             overflow: auto;
 
