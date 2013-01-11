@@ -3,7 +3,9 @@
     <%= image_tag @photo.image.url(:large) %>
   </div>
 
-  <div id='description' class='well'>
-    <%= @photo.description %>
-  </div>
+  <%- if @photo.description.present? %>
+    <div id='description' class='well'>
+      <%= @photo.description %>
+    </div>
+  <% end %>
 </div>
