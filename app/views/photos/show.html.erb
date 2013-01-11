@@ -1,0 +1,9 @@
+<div id='photo'>
+  <div id='image'>
+    <%= image_tag @photo.image.url(:large) %>
+  </div>
+
+  <div id='description' class='well'>
+    <%= @photo.description %>
+  </div>
+</div>

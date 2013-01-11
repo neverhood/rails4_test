@@ -27,7 +27,8 @@ Licemerov::Application.routes.draw do
   resources :albums, only: [ :create, :update, :destroy, :new, :edit ]
 
   # Photos
-  get '/profiles/:user_id/photos' => 'photos#index', as: 'user_photos'
+  get '/profiles/:user_id/photos'     => 'photos#index', as: 'user_photos'
+  get '/profiles/:user_id/photos/:id' => 'photos#show',  as: 'user_photo'
   resources :photos, only: [ :create, :update, :destroy, :show ] do
     get :edit, :on => :collection
   end

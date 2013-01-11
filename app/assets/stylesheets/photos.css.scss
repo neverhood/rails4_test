@@ -16,6 +16,9 @@ body#albums, body#photos {
             height: 200px;
             background: url(loader.gif) no-repeat center;
         }
+
+        div.view-photo {
+        }
     }
 
     div#new-photo-button {
@@ -89,6 +92,20 @@ body#albums, body#photos {
 
         div.photo-form {
             margin-left: 10px;
+        }
+    }
+
+    /* Show */
+
+    div#photo {
+        div#image {
+            width:  800px;
+            margin: 0 auto;
+        }
+
+        div#description {
+            width:  800px;
+            margin: 15px auto;
         }
     }
 

@@ -3,6 +3,10 @@
 
   <div class='hidden photo-meta'>
     <div class='photo-description'>
+      <div class='view-photo'>
+        <%= link_to t('.view'), user_photo_path(@user, photo) %>
+      </div>
+
       <%= photo.description %>
     </div>
   </div>
