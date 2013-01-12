@@ -15,6 +15,10 @@
           data: { type: 'select', url: photo_path(photo), resource: 'photo', name: 'album_id' } %>
       <% end %>
     <% end %>
+
+    <div>
+      <%= link_to t('common.destroy'), photo_path(photo), class: 'destroy-photo', remote: true, method: 'delete', confirm: t('common.are_you_sure?') %>
+    </div>
   </div>
 </div>
 

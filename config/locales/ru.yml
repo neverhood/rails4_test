@@ -30,6 +30,7 @@ ru:
   common:
     submit: 'Сохранить'
     download: 'Загрузить'
+    destroy: 'Удалить'
     please_wait: 'Пожалуйста, подождите..'
     are_you_sure?: 'Вы уверены?'
     male: 'Парень'

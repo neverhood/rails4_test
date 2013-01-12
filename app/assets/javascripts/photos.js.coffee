@@ -125,8 +125,11 @@ $.api.photos = {
             $.api.photos.bindDescriptionUpdate()
             $.api.photos.bindAlbumIdUpdate()
 
+            $('div#edit-photos div.edit-photo a.destroy-photo').bind('ajax:beforeSend', ->
+                $(this).parents('div.edit-photo').remove()
+            )
             # TODO: extract pagination
-            $(document).bind('scroll', ->
+            $(document).bind('scroll.photos', ->
                 if $.api.loading or $.api.photos.lastPage('edit')
                     return false
 
@@ -145,7 +148,7 @@ $.api.photos = {
 
                         $.api.loading = false
             ).bind('page:change', ->
-                $(this).unbind('scroll')
+                $(this).unbind('.photos')
             )
 }
 
