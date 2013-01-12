@@ -1,4 +1,6 @@
 class Photo < ActiveRecord::Base
+  include Feedable
+
   mount_uploader :image, ImageUploader
 
   paginates_per 50

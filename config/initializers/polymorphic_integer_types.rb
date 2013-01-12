@@ -1,0 +1,3 @@
+POLYMORPHIC_INTEGER_TYPES = {
+  0 => 'Photo'
+}

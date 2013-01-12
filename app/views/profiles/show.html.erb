@@ -28,6 +28,17 @@
   <%= render 'subscriptions/direct_subscriptions' %>
 <% end %>
 
+<%- if profile_owner? %>
+  <hr class='clear-separator'>
+
+  <div id='news-feed' data-url='<%= user_path(current_user) %>' data-page='1' data-last-page='<%= @news_feed_entries.last_page? %>'>
+    <%= subheader t('.feed') %>
+    <%= render @news_feed_entries %>
+  </div>
+<%- else %>
+  <%# something else %>
+<% end %>
+
 <%# hidden modals %>
 
 <%= render 'user_avatars/new_photo_modal' %>

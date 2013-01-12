@@ -8,10 +8,11 @@ describe User do
     it { should validate_uniqueness_of(:login) }
     it { should ensure_length_of(:login).is_at_least(3).is_at_most(20) }
     it { should validate_uniqueness_of(:email) }
-    it { should validate_presence_of(:male)    } # boolean
     it { should validate_presence_of(:name)    }
 
     it { should have_many(:albums) }
+    it { should have_many(:photos) }
+    it { should have_many(:news_feed_entries) }
 
     describe 'Login format validation' do
       before { user.should be_valid }

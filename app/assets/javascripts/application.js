@@ -31,6 +31,7 @@
 //= require conversations
 //= require albums
 //= require photos
+//= require news_feed_entries
 //= require profiles
 //= require welcome
 //= require_self

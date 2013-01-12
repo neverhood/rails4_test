@@ -13,6 +13,10 @@ module Licemerov
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    #
+
+    # PATCHES
+    Dir["#{Rails.root}/lib/activerecord/**/**.rb"].each { |file| require file }
 
     config.i18n.default_locale = :ru
     config.time_zone = ActiveSupport::TimeZone.zones_map['Athens']

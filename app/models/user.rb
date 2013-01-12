@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :albums, :dependent => :destroy
   has_many :photos, :dependent => :destroy
+  has_many :news_feed_entries, :dependent => :destroy
 
   # This scope is to be used on collections to avoid loading unneeded attributes
   scope :previews, -> amount = 10 { select('users.id', 'users.name', 'users.male', 'users.avatar', 'users.details').limit(amount) }

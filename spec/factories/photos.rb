@@ -8,4 +8,8 @@ FactoryGirl.define do
       photo.user_id = photo.album.user_id
     end
   end
+
+  factory :standalone_photo, class: Photo do
+    description 'a photo'
+  end
 end

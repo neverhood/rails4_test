@@ -83,6 +83,7 @@ SET default_with_oids = false;
 
 CREATE TABLE albums (
     id integer NOT NULL,
+    photos_count integer DEFAULT 0,
     name character varying(255),
     transliterated_name character varying(255),
     user_id integer,
@@ -176,6 +177,39 @@ CREATE SEQUENCE messages_id_seq
 --
 
 ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
+
+
+--
+-- Name: news_feed_entries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE news_feed_entries (
+    id integer NOT NULL,
+    entry_id integer,
+    entry_type integer,
+    user_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: news_feed_entries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE news_feed_entries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: news_feed_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE news_feed_entries_id_seq OWNED BY news_feed_entries.id;
 
 
 --
@@ -324,6 +358,13 @@ ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY news_feed_entries ALTER COLUMN id SET DEFAULT nextval('news_feed_entries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
 
 
@@ -363,6 +404,14 @@ ALTER TABLE ONLY conversations
 
 ALTER TABLE ONLY messages
     ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: news_feed_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY news_feed_entries
+    ADD CONSTRAINT news_feed_entries_pkey PRIMARY KEY (id);
 
 
 --
@@ -432,6 +481,13 @@ CREATE INDEX index_messages_on_created_at ON messages USING btree (created_at);
 
 
 --
+-- Name: index_news_feed_entries_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_news_feed_entries_on_user_id ON news_feed_entries USING btree (user_id);
+
+
+--
 -- Name: index_subscriptions_on_subscribed_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -492,3 +548,5 @@ INSERT INTO schema_migrations (version) VALUES ('20121219094142');
 INSERT INTO schema_migrations (version) VALUES ('20121229220322');
 
 INSERT INTO schema_migrations (version) VALUES ('20121230165514');
+
+INSERT INTO schema_migrations (version) VALUES ('20130112115110');

@@ -84,6 +84,7 @@ ru:
       conversations: 'Мои диалоги'
       albums: '%{name}: Альбомы'
       my_albums: 'Мои альбомы'
+      feed: 'Новости'
 
   albums:
     index:
@@ -102,7 +103,7 @@ ru:
       edit: 'Редактировать альбом'
     show:
       no_results: 'Нет ни одной фотографии'
-      edit: 'Редактировать настройки альбома'
+      edit: 'Режим редактирования'
       albums: 'Назад к альбомам пользователя'
       my_albums: 'Назад к моим альбомам'
 
@@ -162,6 +163,10 @@ ru:
     new_message_modal:
       header: 'Отправка сообщения'
       submit: 'Отправить'
+
+  news_feed_entries:
+    news_feed_entry:
+      added_photo: 'Добавил фотографию:'
 
   # Activerecord
   activerecord:
