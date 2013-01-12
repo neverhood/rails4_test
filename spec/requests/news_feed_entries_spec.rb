@@ -7,7 +7,7 @@ describe 'NewsFeedEntries' do
   before do
     subscriber.subscribe_to user
     sign_in subscriber
-    visit user_path(subscriber)
+    visit feed_path
   end
 
   it 'shows news feed entry on a user profile page' do

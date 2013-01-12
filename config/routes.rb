@@ -4,7 +4,11 @@ Licemerov::Application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   # Profiles
-  get '/profiles/:user_id' => 'profiles#show', as: 'user'
+  post '/profiles'         => 'profiles#create', as: 'profile_posts'
+  get '/profiles/:user_id' => 'profiles#show',   as: 'user'
+
+  # Feed
+  get '/news' => 'news_feed_entries#index', as: 'feed'
 
   # User Details
   get '/user_details/edit' => 'user_details#edit', as: 'edit_user'

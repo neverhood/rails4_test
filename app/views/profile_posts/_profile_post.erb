@@ -1,0 +1,20 @@
+<div class='profile-post'>
+  <div class='author'>
+    <div class='author-avatar'>
+      <%= link_to image_tag(profile_post.user.avatar.url(:thumb)), user_path(profile_post.user) %>
+    </div>
+
+    <div class='author-name'>
+      <%= link_to truncate(profile_post.user.name, length: 20), user_path(profile_post.user) %>
+    </div>
+  </div>
+
+  <div class='content'>
+    <%- if profile_post.post.is_a?(ProfileComment) %>
+      <%= simple_format profile_post.post.body %>
+    <% else %>
+    <% end %>
+  </div>
+</div>
+
+<hr class='clear-separator'>

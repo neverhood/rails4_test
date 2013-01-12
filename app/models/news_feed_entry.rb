@@ -8,6 +8,6 @@ class NewsFeedEntry < ActiveRecord::Base
 
   scope :for, -> user { joins(:subscriptions).where(['subscriptions.user_id = ?', user.id]).
                           includes(:user).references(:user).
-                          order('news_feed_entries.created_at DESC') 
+                          order('news_feed_entries.created_at DESC')
   }
 end

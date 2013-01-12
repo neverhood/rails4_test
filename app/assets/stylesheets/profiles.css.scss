@@ -6,4 +6,52 @@ body#profiles {
     div#user-avatar-options {
         a { display: block; }
     }
+
+    div#profile-post-form-container {
+        input[type='submit'] {
+            margin-left: 180px;
+        }
+    }
+
+    div#profile-posts {
+        @extend .span9;
+        margin: 0 auto;
+
+        border-left: 1px solid $blue;
+        border-right: 1px solid $blue;
+
+        h3#no-wall-posts {
+            margin-left: 25px;
+        }
+
+        div.profile-post {
+            margin-left: 25px;
+        }
+
+        div.profile-post div.author {
+            a { @extend %non-decorated; }
+
+            @extend .pull-left;
+            width: 104px;
+            height: 120px;
+            margin-bottom: 15px;
+
+            div.author-avatar {
+            }
+
+            div.author-name {
+                text-align: center;
+                line-height: 20px;
+                font-size: 13px;
+
+                text-decoration: none;
+            }
+        }
+
+        div.profile-post div.content {
+            @extend .pull-left;
+
+            margin: 0 0 20px 20px;
+        }
+    }
 }

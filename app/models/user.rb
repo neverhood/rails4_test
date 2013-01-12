@@ -19,12 +19,15 @@ class User < ActiveRecord::Base
   has_many :albums, :dependent => :destroy
   has_many :photos, :dependent => :destroy
   has_many :news_feed_entries, :dependent => :destroy
+  has_one  :profile, :dependent => :destroy
+  has_many :profile_posts, :through => :profile, :dependent => :destroy
 
   # This scope is to be used on collections to avoid loading unneeded attributes
   scope :previews, -> amount = 10 { select('users.id', 'users.name', 'users.male', 'users.avatar', 'users.details').limit(amount) }
 
   before_validation -> { self.login.downcase! }, if: -> { self.login_changed? }
   after_update      -> { self.avatar.recreate_versions! }, if: -> { self.cropping? }
+  after_create      -> { self.create_profile }
 
   def details
     @details ||= OpenStruct.new(read_attribute(:details))

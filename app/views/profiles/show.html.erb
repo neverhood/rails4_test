@@ -28,16 +28,28 @@
   <%= render 'subscriptions/direct_subscriptions' %>
 <% end %>
 
-<%- if profile_owner? %>
-  <hr class='clear-separator'>
+<hr class='clear-separator'>
 
-  <div id='news-feed' data-url='<%= user_path(current_user) %>' data-page='1' data-last-page='<%= @news_feed_entries.last_page? %>'>
-    <%= subheader t('.feed') %>
-    <%= render @news_feed_entries %>
+<div id='profile-posts-section'>
+  <div id='profile-post-form-container'>
+    <%= simple_form_for :profile_post, url: profile_posts_path, remote: true, html: { id: 'new-profile-post', class: 'form form-horizontal' } do |form| %>
+      <%= form.input :body, :as => :text, :input_html => { rows: 3, class: 'span6' } %>
+
+      <%= form.input :profile_id, :as => :hidden, :input_html => { value: @user.profile.id } %>
+      <%= form.input :post_type, :as => :hidden, :input_html => { value: POLYMORPHIC_INTEGER_TYPES.invert[ProfileComment.name] } %>
+
+      <%= form.submit t('common.submit'), class: 'btn btn-success', data: { disable_with: t('common.please_wait') } %>
+    <% end %>
   </div>
-<%- else %>
-  <%# something else %>
-<% end %>
+
+  <div id='profile-posts' data-url='<%= user_path(@user) %>' data-page='1' data-last-page='<%= @profile_posts.last_page? %>'>
+    <%- if @profile_posts.any? %>
+      <%= render @profile_posts %>
+    <% else %>
+      <h3 id='no-wall-posts'> <%= t '.no_profile_posts' %> </h3>
+    <% end %>
+  </div>
+</div>
 
 <%# hidden modals %>
 

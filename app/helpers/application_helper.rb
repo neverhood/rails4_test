@@ -38,10 +38,6 @@ module ApplicationHelper
     "<span class='inline-heads-up'> <span class='label label-info'> #{ t('common.heads_up!') } </span> <strong> #{ text } </span>".html_safe
   end
 
-  def profile_owner?
-    @user.present? and user_signed_in? and ( current_user.id == @user.id )
-  end
-
   def profile_visitor?
     user_signed_in? and not profile_owner?
   end

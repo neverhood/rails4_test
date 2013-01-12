@@ -13,6 +13,8 @@ describe User do
     it { should have_many(:albums) }
     it { should have_many(:photos) }
     it { should have_many(:news_feed_entries) }
+    it { should have_one(:profile) }
+    it { should have_many(:profile_posts) }
 
     describe 'Login format validation' do
       before { user.should be_valid }
@@ -59,6 +61,11 @@ describe User do
     it 'Downcases login' do
       user.update_attributes(login: 'UPPERCASE')
       user.reload.login.should == 'uppercase'
+    end
+
+    it 'Creates profile' do
+      user.save
+      user.profile.should be_present
     end
   end
 

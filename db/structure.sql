@@ -247,6 +247,105 @@ ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
 
 
 --
+-- Name: profile_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE profile_comments (
+    id integer NOT NULL,
+    profile_id integer,
+    user_id integer,
+    body text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: profile_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE profile_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: profile_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE profile_comments_id_seq OWNED BY profile_comments.id;
+
+
+--
+-- Name: profile_posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE profile_posts (
+    id integer NOT NULL,
+    post_id integer,
+    post_type integer,
+    user_id integer,
+    profile_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: profile_posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE profile_posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: profile_posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE profile_posts_id_seq OWNED BY profile_posts.id;
+
+
+--
+-- Name: profiles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE profiles (
+    id integer NOT NULL,
+    user_id integer,
+    preferences hstore,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: profiles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE profiles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: profiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -372,6 +471,27 @@ ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY profile_comments ALTER COLUMN id SET DEFAULT nextval('profile_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profile_posts ALTER COLUMN id SET DEFAULT nextval('profile_posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscriptions_id_seq'::regclass);
 
 
@@ -420,6 +540,30 @@ ALTER TABLE ONLY news_feed_entries
 
 ALTER TABLE ONLY photos
     ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: profile_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY profile_comments
+    ADD CONSTRAINT profile_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: profile_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY profile_posts
+    ADD CONSTRAINT profile_posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY profiles
+    ADD CONSTRAINT profiles_pkey PRIMARY KEY (id);
 
 
 --
@@ -488,6 +632,13 @@ CREATE INDEX index_news_feed_entries_on_user_id ON news_feed_entries USING btree
 
 
 --
+-- Name: index_profiles_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_profiles_on_user_id ON profiles USING btree (user_id);
+
+
+--
 -- Name: index_subscriptions_on_subscribed_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -513,6 +664,13 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: profiles_gin_preferences; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX profiles_gin_preferences ON profiles USING gin (preferences);
 
 
 --
@@ -550,3 +708,9 @@ INSERT INTO schema_migrations (version) VALUES ('20121229220322');
 INSERT INTO schema_migrations (version) VALUES ('20121230165514');
 
 INSERT INTO schema_migrations (version) VALUES ('20130112115110');
+
+INSERT INTO schema_migrations (version) VALUES ('20130112202813');
+
+INSERT INTO schema_migrations (version) VALUES ('20130112205722');
+
+INSERT INTO schema_migrations (version) VALUES ('20130112211641');

@@ -13,6 +13,8 @@ ru:
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
         remember_me: 'Запомнить меня'
+      profile_post:
+        body: 'Содержание'
     # Labels and hints examples
     # labels:
     #   defaults:
@@ -52,6 +54,7 @@ ru:
       brand: 'Лицемеры'
       root_path: 'Главная'
       home_page: 'Моя страница'
+      feed: 'Мои новости'
 
   devise:
     sessions:
@@ -85,7 +88,7 @@ ru:
       conversations: 'Мои диалоги'
       albums: '%{name}: Альбомы'
       my_albums: 'Мои альбомы'
-      feed: 'Новости'
+      no_profile_posts: 'На стене пользователя нет ни одной записи'
 
   albums:
     index:
@@ -166,6 +169,8 @@ ru:
       submit: 'Отправить'
 
   news_feed_entries:
+    index:
+      header: 'Новости'
     news_feed_entry:
       added_photo: 'Добавил фотографию:'
 

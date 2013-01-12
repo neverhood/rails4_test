@@ -1,0 +1,6 @@
+<%= page_header %>
+
+<div id='news-feed' data-url='<%= feed_path %>' data-page='1' data-last-page='<%= @news_feed_entries.last_page? %>'>
+  <%= render @news_feed_entries %>
+</div>
+

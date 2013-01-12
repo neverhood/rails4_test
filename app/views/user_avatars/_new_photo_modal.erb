@@ -22,7 +22,7 @@
         <hr />
 
         <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token.to_s %>'>
-        <%= form.submit t('common.submit'), class: 'btn btn-info' %>
+        <%= form.submit t('common.submit'), class: 'btn btn-info', data: { disable_with: t('common.please_wait') } %>
       <% end %>
     </div>
 

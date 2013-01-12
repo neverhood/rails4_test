@@ -2,7 +2,7 @@ class CreateNewsFeedEntries < ActiveRecord::Migration
   def change
     create_table :news_feed_entries do |t|
       t.integer :entry_id
-      t.integer :entry_type
+      t.integer :entry_type, limit: 1
       t.integer :user_id
 
       t.timestamps
