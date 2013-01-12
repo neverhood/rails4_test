@@ -35,7 +35,7 @@ $.api.profiles = {
 
             $this.find('textarea#profile_post_body').val('')
 
-            _this.container().prepend(response.post)
+            _this.container().prepend(response.post).find('h3#no-profile-posts').remove()
             _this.delayDisableSubmit $this
         ).
             find('input[type="submit"]').attr('disabled', true)
