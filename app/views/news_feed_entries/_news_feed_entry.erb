@@ -13,7 +13,7 @@
     <%- if news_feed_entry.entry.is_a?(Photo) %>
       <div class='tip'> <%= t '.added_photo' %> </div>
 
-      <%= image_tag news_feed_entry.entry.image.url(:thumb) %>
+      <%= link_to image_tag(news_feed_entry.entry.image.url(:thumb)), user_photo_path(news_feed_entry.user, news_feed_entry.entry) %>
     <% else %>
     <% end %>
   </div>

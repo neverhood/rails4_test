@@ -83,7 +83,6 @@ SET default_with_oids = false;
 
 CREATE TABLE albums (
     id integer NOT NULL,
-    photos_count integer DEFAULT 0,
     name character varying(255),
     transliterated_name character varying(255),
     user_id integer,
@@ -186,7 +185,7 @@ ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 CREATE TABLE news_feed_entries (
     id integer NOT NULL,
     entry_id integer,
-    entry_type integer,
+    entry_type smallint,
     user_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone

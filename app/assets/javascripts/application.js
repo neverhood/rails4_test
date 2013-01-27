@@ -57,7 +57,7 @@ $(document).on('ready page:load', function() {
     $.api.isProfileOwner = this.body.attributes['data-profile-owner'].value === 'true';
 
     if ( $('div#current-user-json').length )
-        $.api.currentUser = $.parseJSON( $('div#current-user-json') )
+        $.api.currentUser = $.parseJSON( $('div#current-user-json').text() )
 
     if ( typeof $.api[ $.camelCase($.api.controller) ] === 'object' ) $.api[ $.camelCase($.api.controller) ].init();
 

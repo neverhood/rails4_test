@@ -1,5 +1,5 @@
 <%- if user_signed_in? %>
-  <div class='hidden' id='current-user-details'>
+  <div class='hidden' id='current-user-json'>
     <%= JSON.dump({ id: current_user.id }) %>
   </div>
 <% end %>
