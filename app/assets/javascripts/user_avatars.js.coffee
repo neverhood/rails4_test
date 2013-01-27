@@ -69,8 +69,8 @@ $.api.userAvatars = {
 
                 reader.readAsDataURL files[0]
 
-        # form togglers
         $('form#new-user-avatar').bind 'ajax:complete', (event, xhr, status) ->
+            alert 'why'
             $('div#upload-new-photo-modal').modal('hide')
             avatarContainer = $('div#profile-avatar')
 

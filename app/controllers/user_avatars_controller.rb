@@ -4,7 +4,10 @@ class UserAvatarsController < ApplicationController
   def create
     current_user.update_attributes(user_avatar_params)
 
-    render json: { image: { medium: current_user.avatar.url(:medium), thumb: current_user.avatar.url(:thumb) } }
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: { image: { medium: current_user.avatar.url(:medium), thumb: current_user.avatar.url(:thumb) } } }
+    end
   end
 
   def update

@@ -175,6 +175,7 @@ ru:
       header: 'Новости'
     news_feed_entry:
       added_photo: 'Добавил фотографию:'
+      added_profile_comment: 'Добавил запись:'
 
   # Activerecord
   activerecord:

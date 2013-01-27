@@ -68,7 +68,7 @@ class PhotosController < ApplicationController
 
   def photo_params
     if params[:photo].present?
-      params[:photo][:image] = params[:photo][:image].first if params[:photo][:image].is_a?(Array)
+      params[:photo][:image] = params[:photo][:image].last if params[:photo][:image].is_a?(Array)
     end
 
     params.require(:photo).permit(:description, :album_id, :image)
