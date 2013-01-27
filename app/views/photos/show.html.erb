@@ -1,4 +1,6 @@
 <div id='photo'>
+  <%= link_to t('.album'), user_album_path(@photo.user, @photo.album.transliterated_name) %>
+
   <div id='image'>
     <%= image_tag @photo.image.url(:large) %>
   </div>

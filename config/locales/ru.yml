@@ -131,6 +131,8 @@ ru:
       out_of: 'из'
     photo:
       view: 'На страницу с фотографией'
+    show:
+      album: 'К альбому'
 
   user_details:
     edit:
