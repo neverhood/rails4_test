@@ -1,0 +1,17 @@
+<div class='photo-comment'>
+  <div class='author'>
+    <div class='author-avatar'>
+      <%= link_to image_tag(photo_comment.user.avatar.url(:thumb)), user_path(photo_comment.user) %>
+    </div>
+
+    <div class='author-name'>
+      <%= link_to truncate(photo_comment.user.name, length: 20), user_path(photo_comment.user) %>
+    </div>
+  </div>
+
+  <div class='content'>
+    <%= simple_format photo_comment.body %>
+  </div>
+</div>
+
+<hr class='clear-separator'>

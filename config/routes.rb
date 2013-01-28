@@ -36,4 +36,7 @@ Licemerov::Application.routes.draw do
   resources :photos, only: [ :create, :update, :destroy, :show ] do
     get :edit, :on => :collection
   end
+
+  # Photo comments
+  resources :photo_comments, only: [ :create, :update, :destroy ]
 end

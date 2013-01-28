@@ -107,6 +107,21 @@ body#albums, body#photos {
             width:  800px;
             margin: 15px auto;
         }
+
+        form#new-photo-comment {
+            margin-left: 5px;
+
+            input[type='submit'] {
+                margin-left: 180px;
+
+                @extend .btn;
+                @extend .btn-success;
+            }
+        }
+
+        div#comments {
+            @extend %user-input-entries;
+        }
     }
 
 }

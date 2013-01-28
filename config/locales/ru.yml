@@ -199,6 +199,8 @@ ru:
       photo:
         description: 'Описание'
         album_id: 'Альбом'
+      photo_comment:
+        body: 'Содержание'
 
     errors:
       models:

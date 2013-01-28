@@ -212,6 +212,39 @@ ALTER SEQUENCE news_feed_entries_id_seq OWNED BY news_feed_entries.id;
 
 
 --
+-- Name: photo_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE photo_comments (
+    id integer NOT NULL,
+    photo_id integer,
+    user_id integer,
+    body text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: photo_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE photo_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: photo_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE photo_comments_id_seq OWNED BY photo_comments.id;
+
+
+--
 -- Name: photos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -463,6 +496,13 @@ ALTER TABLE ONLY news_feed_entries ALTER COLUMN id SET DEFAULT nextval('news_fee
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY photo_comments ALTER COLUMN id SET DEFAULT nextval('photo_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
 
 
@@ -531,6 +571,14 @@ ALTER TABLE ONLY messages
 
 ALTER TABLE ONLY news_feed_entries
     ADD CONSTRAINT news_feed_entries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: photo_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY photo_comments
+    ADD CONSTRAINT photo_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -713,3 +761,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130112202813');
 INSERT INTO schema_migrations (version) VALUES ('20130112205722');
 
 INSERT INTO schema_migrations (version) VALUES ('20130112211641');
+
+INSERT INTO schema_migrations (version) VALUES ('20130127153702');

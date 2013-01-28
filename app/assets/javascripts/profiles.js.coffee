@@ -40,25 +40,9 @@ $.api.profiles = {
         ).
             find('input[type="submit"]').attr('disabled', true)
 
-        $(document).
-            bind('scroll.profiles', ->
-                if $.api.loading or $.api.profiles.lastPage()
-                    return false
-
-                if nearBottomOfPage()
-                    container   = _this.container()
-                    pageToFetch = _this.currentPage() + 1
-                    url         = "#{ _this.url() }?page=#{ pageToFetch }"
-
-                    $.api.loading = true
-                    $.getJSON url, (data) ->
-                        container.append data.posts
-                        container.attr('data-last-page', data.last)
-                            .attr('data-page', pageToFetch)
-
-                        $.api.loading = false
-            ).
-            bind('page:change', ->
-                $(this).unbind '.profiles')
+        $.endlessScrolling
+            namespace: 'profiles'
+            container: 'div#profile-posts'
+            items:     'posts'
 
 }

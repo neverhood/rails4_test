@@ -7,6 +7,7 @@ class Photo < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :album
+  has_many :photo_comments, :dependent => :destroy
 
   validates :description, length: { within: (0..1000) }, allow_nil: true
 

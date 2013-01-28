@@ -18,6 +18,7 @@
 //
 //= require bootstrap
 //= require bootstrap-gallery
+//= require endless-scrolling
 //= require editable
 //= require editable-rails
 //
@@ -31,6 +32,7 @@
 //= require albums
 //= require photos
 //= require news_feed_entries
+//= require photo_comments
 //= require profiles
 //= require welcome
 //= require_self

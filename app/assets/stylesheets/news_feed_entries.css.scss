@@ -1,36 +1,12 @@
 body#news-feed-entries {
 
     div.news-feed-entry {
-        div.author {
-            a { @extend %non-decorated; }
-
-            @extend .pull-left;
-            width: 104px;
-            height: 120px;
-            margin-bottom: 15px;
-
-            div.author-avatar {
-            }
-
-            div.author-name {
-                text-align: center;
-                line-height: 20px;
-                font-size: 13px;
-
-                text-decoration: none;
-            }
-        }
+        @extend %user-input-entries;
 
         div.tip {
             @extend .success-text;
 
             margin-bottom: 10px;
-        }
-
-        div.content {
-            @extend .pull-left;
-
-            margin: 0 0 20px 100px;
         }
     }
 

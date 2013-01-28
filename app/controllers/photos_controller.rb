@@ -43,6 +43,13 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @photo_comments = @photo.photo_comments.includes(:user).references(:user).page(params[:page])
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: { comments: render_to_string(partial: 'photo_comments/photo_comment', collection: @photo_comments),
+                                   last: @photo_comments.last_page? } }
+    end
   end
 
   def destroy

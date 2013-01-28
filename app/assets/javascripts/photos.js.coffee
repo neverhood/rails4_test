@@ -47,6 +47,8 @@ $.api.photos = {
     init: ->
         _this = this
 
+        $.api.photoComments.init() if $.api.controller == 'photos' and $.api.action == 'show'
+
         $('form#upload-photos').fileupload
             dataType: 'json',
             maxFileSize: 5000000,
