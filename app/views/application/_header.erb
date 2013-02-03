@@ -7,7 +7,11 @@
       <%= navbar_link t('.root_path'), root_path, data: { 'no-turbolink' => true } %>
       <%- if user_signed_in? %>
         <%= navbar_link t('.home_page'), user_path(current_user) %>
-        <%= navbar_link t('.feed'), feed_path %>
+        <%- if news_count > 0 %>
+          <%= navbar_link "#{ t('.feed') } +#{ news_count }", feed_path %>
+        <% else %>
+          <%= navbar_link t('.feed'), feed_path %>
+        <% end %>
       <%- end %>
     </ul>
 

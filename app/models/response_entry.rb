@@ -10,4 +10,5 @@ class ResponseEntry < ActiveRecord::Base
   belongs_to :entry, polymorphic: true
 
   default_scope -> { order('response_entries.created_at DESC') }
+  scope :unread, -> { where(read: false) }
 end

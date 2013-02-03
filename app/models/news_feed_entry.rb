@@ -10,4 +10,6 @@ class NewsFeedEntry < ActiveRecord::Base
                           includes(:user).references(:user).
                           order('news_feed_entries.created_at DESC')
   }
+
+  scope :unread, -> { where(read: false) }
 end

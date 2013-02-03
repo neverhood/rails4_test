@@ -4,9 +4,7 @@ module Respondable
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def respondable?
-      true
-    end
+    def respondable?; true; end
   end
 
   included do

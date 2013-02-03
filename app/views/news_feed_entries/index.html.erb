@@ -1,8 +1,17 @@
 <%= page_header %>
 
 <ul class="nav nav-pills">
-  <li class="active"> <%= link_to t('.news'), feed_path %> </li>
-  <li> <%= link_to t('.responses'), responses_path %> </li>
+  <%- if unread_news_feed_entries_count > 0 %>
+    <li class='active'> <%= link_to "#{ t('.news') } +#{ unread_news_feed_entries_count }", feed_path %> </li>
+  <% else %>
+    <li class='active'> <%= link_to t('.news'), feed_path %> </li>
+  <% end %>
+
+  <%- if unread_response_entries_count > 0 %>
+    <li> <%= link_to "#{ t('.responses') } +#{ unread_response_entries_count }", responses_path %> </li>
+  <% else %>
+    <li> <%= link_to t('.responses'), responses_path %> </li>
+  <% end %>
 </ul>
 
 <div id='news-feed' data-url='<%= feed_path %>' data-page='1' data-last-page='<%= @news_feed_entries.last_page? %>'>

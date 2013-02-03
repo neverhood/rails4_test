@@ -18,6 +18,18 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def news_count
+    unread_news_feed_entries_count + unread_response_entries_count
+  end
+
+  def unread_news_feed_entries_count
+    @unread_news_feed_entries_count ||= NewsFeedEntry.for(current_user).unread.count
+  end
+
+  def unread_response_entries_count
+    @unread_response_entries_count ||= current_user.response_entries.unread.count
+  end
+
   def page_header(text = nil, subtext = nil)
     "<div class='page-header'> <h3> #{ text ? text : t('.header') } #{ subtext ? ('<small>' + subtext + '</small>') : ''} </h3> </div>".html_safe
   end
