@@ -1,0 +1,39 @@
+// Place all the styles related to the users_search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body#users-search {
+    div#users-search-container {
+        @extend .span3;
+        @extend .pull-left;
+
+        border-right: 1px solid $grayLighter;
+    }
+
+    div#users-search-results {
+        @extend .span8;
+        @extend .pull-left;
+
+        margin-left: 25px;
+    }
+
+    div.user {
+        div.user-avatar, div.user-info {
+            @extend .pull-left;
+        }
+        a { @extend %non-decorated }
+
+        div.user-info {
+            margin-left: 25px;
+
+            div.user-name {
+                font-weight: bold;
+                font-size:   18px;
+                color:       $blue;
+
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

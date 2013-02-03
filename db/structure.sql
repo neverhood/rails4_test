@@ -36,6 +36,20 @@ CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
 COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
 
 
+--
+-- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pg_trgm; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pg_trgm IS 'text similarity measurement and index searching based on trigrams';
+
+
 SET search_path = public, pg_catalog;
 
 --
@@ -456,6 +470,15 @@ ALTER SEQUENCE subscriptions_id_seq OWNED BY subscriptions.id;
 
 
 --
+-- Name: test_trgm; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE test_trgm (
+    t text
+);
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -786,6 +809,13 @@ CREATE INDEX users_gin_details ON users USING gin (details);
 
 
 --
+-- Name: users_name_trgm_gin; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX users_name_trgm_gin ON users USING gin (name gin_trgm_ops);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -816,3 +846,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130112211641');
 INSERT INTO schema_migrations (version) VALUES ('20130127153702');
 
 INSERT INTO schema_migrations (version) VALUES ('20130202214405');
+
+INSERT INTO schema_migrations (version) VALUES ('20130203200004');

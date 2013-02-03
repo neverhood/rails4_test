@@ -35,6 +35,7 @@
 //= require response_entries
 //= require photo_comments
 //= require profiles
+//= require users_search
 //= require welcome
 //= require_self
 //

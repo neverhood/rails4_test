@@ -13,6 +13,10 @@ Licemerov::Application.routes.draw do
   # Responses
   get '/responses' => 'response_entries#index', as: 'responses'
 
+  # Users search
+  get '/users_search' => 'users_search#show',    as: 'users_search'
+  post '/users_search' => 'users_search#create', as: 'create_users_search'
+
   # User Details
   get '/user_details/edit' => 'user_details#edit', as: 'edit_user'
   put '/user_details'      => 'user_details#update', as: 'update_user'

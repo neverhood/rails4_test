@@ -15,6 +15,10 @@ ru:
         remember_me: 'Запомнить меня'
       profile_post:
         body: 'Содержание'
+      users_search:
+        male: 'Пол'
+        name: 'Имя'
+
     # Labels and hints examples
     # labels:
     #   defaults:
@@ -55,6 +59,7 @@ ru:
       root_path: 'Главная'
       home_page: 'Моя страница'
       feed: 'Мои новости'
+      users_search: 'Люди'
 
   devise:
     sessions:
@@ -188,6 +193,13 @@ ru:
     response_entry:
       added_photo_comment: 'Прокомментировал Вашу фотографию:'
       added_profile_comment: 'Оставил комментарий на Вашей стене:'
+
+  users_search:
+    show:
+      header: 'Поиск людей'
+      no_users: 'Не найден ни один пользователь'
+    user:
+      photos_count: 'Фотографий'
 
   # Activerecord
   activerecord:
