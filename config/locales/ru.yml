@@ -88,6 +88,7 @@ ru:
       conversations: 'Мои диалоги'
       albums: '%{name}: Альбомы'
       my_albums: 'Мои альбомы'
+      user_albums: 'Фото'
       no_profile_posts: 'На стене пользователя нет ни одной записи'
 
   albums:
