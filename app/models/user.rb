@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   has_many :photo_comments, :dependent => :destroy
   has_many :news_feed_entries, :dependent => :destroy
+  has_many :response_entries, :dependent => :destroy
   has_one  :profile, :dependent => :destroy
   has_many :profile_posts, :through => :profile, :dependent => :destroy
 

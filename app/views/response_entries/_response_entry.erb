@@ -1,0 +1,26 @@
+<div class='response-entry'>
+  <div class='author'>
+    <div class='author-avatar'>
+      <%= link_to image_tag(response_entry.author.avatar.url(:thumb)), user_path(response_entry.author) %>
+    </div>
+
+    <div class='author-name'>
+      <%= link_to truncate(response_entry.author.name, length: 20), user_path(response_entry.author) %>
+    </div>
+  </div>
+
+  <div class='content'>
+    <%- if response_entry.entry.is_a?(PhotoComment) %>
+      <div class='tip'> <%= t '.added_photo_comment' %> </div>
+
+      <%= link_to simple_format(truncate(response_entry.entry.body, length: 150)), user_photo_path(current_user, response_entry.entry.photo_id) %>
+    <%- elsif response_entry.entry.is_a?(ProfileComment) %>
+      <div class='tip'> <%= t '.added_profile_comment' %> </div>
+
+      <%= link_to simple_format(truncate(response_entry.entry.body, length: 150)), user_path(current_user) %>
+    <% end %>
+  </div>
+</div>
+
+<hr class='clear-separator'>
+

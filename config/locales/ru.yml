@@ -173,9 +173,20 @@ ru:
   news_feed_entries:
     index:
       header: 'Новости'
+      news: 'Новости'
+      responses: 'Ответы'
     news_feed_entry:
       added_photo: 'Добавил фотографию:'
       added_profile_comment: 'Добавил запись:'
+
+  response_entries:
+    index:
+      header: 'Ответы'
+      news: 'Новости'
+      responses: 'Ответы'
+    response_entry:
+      added_photo_comment: 'Прокомментировал Вашу фотографию:'
+      added_profile_comment: 'Оставил комментарий на Вашей стене:'
 
   # Activerecord
   activerecord:

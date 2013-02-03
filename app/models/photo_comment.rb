@@ -1,4 +1,6 @@
 class PhotoComment < ActiveRecord::Base
+  include Respondable
+
   belongs_to :photo
   belongs_to :user
 

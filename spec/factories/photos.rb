@@ -2,10 +2,14 @@
 
 FactoryGirl.define do
   factory :photo do
-    association :album
+    description 'a photo'
 
     after(:build) do |photo|
-      photo.user_id = photo.album.user_id
+      if photo.user_id.present? and not photo.album_id.present?
+        photo.album_id = FactoryGirl.create(:album, user: photo.user).id
+      end
+
+      photo.user_id ||= photo.album.user_id
     end
   end
 

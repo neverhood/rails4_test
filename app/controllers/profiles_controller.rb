@@ -8,6 +8,9 @@ class ProfilesController < ApplicationController
   before_filter :require_valid_post_type!, only: [ :create ]
   before_filter :find_profile!, only: [ :create ]
 
+  after_filter :create_response_entry, only: [ :create ],
+    if: -> { @profile_entity.present? and @profile_entity.persisted? and @profile_entity.class.respondable? and @profile_entity.profile.user_id != current_user.id }
+
   def show
     @conversation = current_user.conversation_with(@user) if current_user.has_conversation_with?(@user)
     @profile_posts = @user.profile_posts.includes(:user).references(:user).page(params[:page])
@@ -50,6 +53,10 @@ class ProfilesController < ApplicationController
 
   def profile_post_class
     POLYMORPHIC_INTEGER_TYPES[profile_post_params[:post_type].to_i].constantize
+  end
+
+  def create_response_entry
+    @profile_entity.create_response_entry(author_id: current_user.id, user_id: @profile_entity.profile.user_id)
   end
 
 end

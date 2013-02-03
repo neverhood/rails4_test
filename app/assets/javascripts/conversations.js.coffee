@@ -21,8 +21,9 @@ $.api.conversations = {
     init: ->
         _this = this
 
-        _this.scrollHistoryDown()
-        $('body').scrollTop 10000
+        if $.api.controller == 'conversations'
+            _this.scrollHistoryDown()
+            $('body').scrollTop 10000
 
         $(document).bind 'page:change', ->
             $('div#history').unbind 'scroll'

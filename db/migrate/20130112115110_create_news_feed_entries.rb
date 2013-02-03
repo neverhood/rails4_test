@@ -4,6 +4,7 @@ class CreateNewsFeedEntries < ActiveRecord::Migration
       t.integer :entry_id
       t.integer :entry_type, limit: 1
       t.integer :user_id
+      t.boolean :read, default: false
 
       t.timestamps
     end

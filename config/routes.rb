@@ -10,6 +10,9 @@ Licemerov::Application.routes.draw do
   # Feed
   get '/news' => 'news_feed_entries#index', as: 'feed'
 
+  # Responses
+  get '/responses' => 'response_entries#index', as: 'responses'
+
   # User Details
   get '/user_details/edit' => 'user_details#edit', as: 'edit_user'
   put '/user_details'      => 'user_details#update', as: 'update_user'

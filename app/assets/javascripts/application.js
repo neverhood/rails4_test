@@ -32,6 +32,7 @@
 //= require albums
 //= require photos
 //= require news_feed_entries
+//= require response_entries
 //= require photo_comments
 //= require profiles
 //= require welcome

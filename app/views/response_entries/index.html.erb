@@ -1,0 +1,11 @@
+<%= page_header %>
+
+<ul class="nav nav-pills">
+  <li> <%= link_to t('.news'), feed_path %> </li>
+  <li class='active'> <%= link_to t('.responses'), responses_path %> </li>
+</ul>
+
+<div id='response-entries' data-url='<%= responses_path %>' data-page='1' data-last-page='<%= @response_entries.last_page? %>'>
+  <%= render @response_entries %>
+</div>
+

@@ -1,0 +1,13 @@
+body#response-entries {
+
+    div.response-entry {
+        @extend %user-input-entries;
+
+        div.tip {
+            @extend .success-text;
+
+            margin-bottom: 10px;
+        }
+    }
+
+}
