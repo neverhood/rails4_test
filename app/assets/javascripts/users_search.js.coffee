@@ -23,8 +23,12 @@ $.api.usersSearch = {
 
             if response.total > 0
                 $('div#users-search-results').html response.users
+
+                $('strong#users-search-results-total').html response.total
+                $('div#search-results-count').show()
             else
                 $('div#users-search-results').html "<span class='tip'> #{ $(this).data('placeholder-text') } </span>"
+                $('div#search-results-count').hide()
         )
 
 }

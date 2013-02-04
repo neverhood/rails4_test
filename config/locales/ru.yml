@@ -198,6 +198,7 @@ ru:
     show:
       header: 'Поиск людей'
       no_users: 'Не найден ни один пользователь'
+      people_found: 'Найдено людей'
     user:
       photos_count: 'Фотографий'
 

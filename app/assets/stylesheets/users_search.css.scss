@@ -17,6 +17,15 @@ body#users-search {
         margin-left: 25px;
     }
 
+    div#search-results-count {
+        display: none;
+        float: left;
+
+        font-size: 18px;
+        color: $grayLight;
+        margin: 15px 0 25px 15px;
+    }
+
     div.user {
         div.user-avatar, div.user-info {
             @extend .pull-left;

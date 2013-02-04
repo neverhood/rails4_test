@@ -2,9 +2,13 @@
 
 <div id='users-search-container'>
   <%= simple_form_for :users_search, remote: true, html: { id: 'users-search' }, data: { placeholder_text: t('.no_users') } do |form| %>
-    <%= form.input :name %>
-    <%= form.input :male, :as => :radio_buttons, :collection => [ [t('common.male'), true], [t('common.female'), false] ] %>
+    <%= form.input :name, required: false %>
+    <%= form.input :male, :as => :radio_buttons, :collection => [ [t('common.male'), true], [t('common.female'), false] ], required: false %>
   <% end %>
+</div>
+
+<div id='search-results-count'>
+  <%= t '.people_found' %>: <strong id='users-search-results-total'></strong>
 </div>
 
 <div id='users-search-results'>

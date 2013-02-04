@@ -42,5 +42,4 @@ class PhotoCommentsController < ApplicationController
   def create_response_entry
     @photo_comment.create_response_entry(author_id: current_user.id, user_id: @photo.user_id)
   end
-
 end
