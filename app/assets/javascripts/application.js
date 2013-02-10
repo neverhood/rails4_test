@@ -22,7 +22,6 @@
 //= require endless-scrolling
 //= require editable
 //= require editable-rails
-//= require select2
 //
 //= require api/api
 //
