@@ -18,9 +18,11 @@
 //
 //= require bootstrap
 //= require bootstrap-gallery
+//= require bootstrap-typeahead
 //= require endless-scrolling
 //= require editable
 //= require editable-rails
+//= require select2
 //
 //= require api/api
 //

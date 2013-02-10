@@ -127,6 +127,38 @@ ALTER SEQUENCE albums_id_seq OWNED BY albums.id;
 
 
 --
+-- Name: cities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE cities (
+    id integer NOT NULL,
+    name character varying(255),
+    country_id integer,
+    region_id integer,
+    large boolean DEFAULT false
+);
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cities_id_seq OWNED BY cities.id;
+
+
+--
 -- Name: conversations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -155,6 +187,36 @@ CREATE SEQUENCE conversations_id_seq
 --
 
 ALTER SEQUENCE conversations_id_seq OWNED BY conversations.id;
+
+
+--
+-- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE countries (
+    id integer NOT NULL,
+    name character varying(255),
+    english_name character varying(255)
+);
+
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE countries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE countries_id_seq OWNED BY countries.id;
 
 
 --
@@ -393,6 +455,36 @@ ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
 
 
 --
+-- Name: regions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE regions (
+    id integer NOT NULL,
+    country_id integer,
+    name character varying(255)
+);
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE regions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE regions_id_seq OWNED BY regions.id;
+
+
+--
 -- Name: response_entries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -470,15 +562,6 @@ ALTER SEQUENCE subscriptions_id_seq OWNED BY subscriptions.id;
 
 
 --
--- Name: test_trgm; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE test_trgm (
-    t text
-);
-
-
---
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -534,7 +617,21 @@ ALTER TABLE ONLY albums ALTER COLUMN id SET DEFAULT nextval('albums_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY cities ALTER COLUMN id SET DEFAULT nextval('cities_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY countries ALTER COLUMN id SET DEFAULT nextval('countries_id_seq'::regclass);
 
 
 --
@@ -590,6 +687,13 @@ ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY regions ALTER COLUMN id SET DEFAULT nextval('regions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY response_entries ALTER COLUMN id SET DEFAULT nextval('response_entries_id_seq'::regclass);
 
 
@@ -616,11 +720,27 @@ ALTER TABLE ONLY albums
 
 
 --
+-- Name: cities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY cities
+    ADD CONSTRAINT cities_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: conversations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY conversations
     ADD CONSTRAINT conversations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY countries
+    ADD CONSTRAINT countries_pkey PRIMARY KEY (id);
 
 
 --
@@ -680,6 +800,14 @@ ALTER TABLE ONLY profiles
 
 
 --
+-- Name: regions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY regions
+    ADD CONSTRAINT regions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: response_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -704,10 +832,31 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: cities_name_trgm_gin; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX cities_name_trgm_gin ON cities USING gin (name gin_trgm_ops);
+
+
+--
 -- Name: conversations_gin_users; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX conversations_gin_users ON conversations USING gin (users);
+
+
+--
+-- Name: countries_english_name_trgm_gin; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX countries_english_name_trgm_gin ON countries USING gin (english_name gin_trgm_ops);
+
+
+--
+-- Name: countries_name_trgm_gin; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX countries_name_trgm_gin ON countries USING gin (name gin_trgm_ops);
 
 
 --
@@ -725,10 +874,45 @@ CREATE UNIQUE INDEX index_albums_on_user_id_and_transliterated_name ON albums US
 
 
 --
+-- Name: index_cities_on_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_cities_on_country_id ON cities USING btree (country_id);
+
+
+--
+-- Name: index_cities_on_large; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_cities_on_large ON cities USING btree (large);
+
+
+--
+-- Name: index_cities_on_region_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_cities_on_region_id ON cities USING btree (region_id);
+
+
+--
 -- Name: index_conversations_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_conversations_on_updated_at ON conversations USING btree (updated_at);
+
+
+--
+-- Name: index_countries_on_english_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_countries_on_english_name ON countries USING btree (english_name);
+
+
+--
+-- Name: index_countries_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_countries_on_name ON countries USING btree (name);
 
 
 --
@@ -757,6 +941,13 @@ CREATE INDEX index_news_feed_entries_on_user_id ON news_feed_entries USING btree
 --
 
 CREATE UNIQUE INDEX index_profiles_on_user_id ON profiles USING btree (user_id);
+
+
+--
+-- Name: index_regions_on_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_regions_on_country_id ON regions USING btree (country_id);
 
 
 --
@@ -848,3 +1039,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130127153702');
 INSERT INTO schema_migrations (version) VALUES ('20130202214405');
 
 INSERT INTO schema_migrations (version) VALUES ('20130203200004');
+
+INSERT INTO schema_migrations (version) VALUES ('20130204210039');
+
+INSERT INTO schema_migrations (version) VALUES ('20130204210059');
+
+INSERT INTO schema_migrations (version) VALUES ('20130210121035');

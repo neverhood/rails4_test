@@ -46,4 +46,11 @@ Licemerov::Application.routes.draw do
 
   # Photo comments
   resources :photo_comments, only: [ :create, :update, :destroy ]
+
+
+
+  # Cities and countries
+  get '/countries' => 'countries#index'
+  get '/cities' => 'cities#index'
+
 end

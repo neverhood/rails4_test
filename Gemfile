@@ -40,12 +40,12 @@ group :development, :test do
   gem 'zeus'
   gem 'guard-rspec'
   gem 'rb-inotify', '~> 0.8.8'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
 end
 
 # DB
@@ -79,3 +79,5 @@ gem 'mini_magick'
 # To use debugger
 # gem 'debugger'
 
+gem 'mechanize'
+gem 'htmlentities'

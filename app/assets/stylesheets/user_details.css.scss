@@ -14,5 +14,13 @@ body#user-details {
         div.heads-up {
             margin-left: 180px;
         }
+
+        div.select2-container {
+            width: 220px;
+        }
+
+        input#country-auto-completion {
+            display: none;
+        }
     }
 }

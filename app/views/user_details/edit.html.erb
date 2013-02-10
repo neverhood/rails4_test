@@ -7,6 +7,14 @@
   <div id='current-avatar'> <%= image_tag current_user.avatar.medium %> </div>
   <%= form.input :name %>
 
+  <%= simple_fields_for :user_details do |details_form| %>
+    <%= details_form.input :fake_country_id, :as => :select, prompt: t('.country_placeholder'), collection: countries_collection %>
+    <%= details_form.input :city_id    %>
+
+    <input type='text' id='country-auto-completion' placeholder='<%= t('.other_country') %>' />
+    <%= details_form.input :country_id, :as => :hidden %>
+  <% end %>
+
   <%= heads_up! t('.login_explanation') %>
   <%= form.input :login, hint: t('.login_hint') %>
   <%= form.input :avatar, :as => :file %>
@@ -15,3 +23,7 @@
 
   <%= form.submit t('common.submit'), class: 'btn btn-info' %>
 <% end %>
+
+<div class='hidden' id='prepopulated-countries-data'>
+  <%= Country.general.to_json %>
+</div>

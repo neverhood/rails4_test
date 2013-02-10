@@ -1,0 +1,265 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: vlad
+--
+
+COPY countries (id, name, english_name) FROM stdin;
+1	Россия	Russia
+2	Украина	Ukraine
+3	Беларусь	Belarus
+4	Казахстан	Kazakhstan
+5	Азербайджан	Azerbaijan
+6	Армения	Armenia
+7	Грузия	Georgia
+8	Израиль	Israel
+9	США	USA
+10	Канада	Canada
+11	Кыргызстан	Kyrgyzstan
+12	Латвия	Latvia
+13	Литва	Lithuania
+14	Эстония	Estonia
+15	Молдова	Moldova
+16	Таджикистан	Tajikistan
+17	Туркменистан	Turkmenistan
+18	Узбекистан	Uzbekistan
+19	Австралия	Australia
+20	Австрия	Austria
+21	Албания	Albania
+22	Алжир	Algeria
+23	Американское Самоа	American Samoa
+24	Ангилья	Anguilla
+25	Ангола	Angola
+26	Андорра	Andorra
+27	Антигуа и Барбуда	Antigua and Barbuda
+28	Аргентина	Argentina
+29	Аруба	Aruba
+30	Афганистан	Afghanistan
+31	Багамы	Bahamas
+32	Бангладеш	Bangladesh
+33	Барбадос	Barbados
+34	Бахрейн	Bahrain
+35	Белиз	Belize
+36	Бельгия	Belgium
+37	Бенин	Benin
+38	Бермуды	Bermuda
+39	Болгария	Bulgaria
+40	Боливия	Bolivia
+41	Босния и Герцеговина	Bosnia and Herzegovina
+42	Ботсвана	Botswana
+43	Бразилия	Brazil
+44	Бруней-Даруссалам	Brunei Darussalam
+45	Буркина-Фасо	Burkina Faso
+46	Бурунди	Burundi
+47	Бутан	Bhutan
+48	Вануату	Vanuatu
+49	Великобритания	United Kingdom
+50	Венгрия	Hungary
+51	Венесуэла	Venezuela
+52	Виргинские острова, Британские	British Virgin Islands
+53	Виргинские острова, США	US Virgin Islands
+54	Восточный Тимор	East Timor
+55	Вьетнам	Vietnam
+56	Габон	Gabon
+57	Гаити	Haiti
+58	Гайана	Guyana
+59	Гамбия	Gambia
+60	Гана	Ghana
+61	Гваделупа	Guadeloupe
+62	Гватемала	Guatemala
+63	Гвинея	Guinea
+64	Гвинея-Бисау	Guinea-Bissau
+65	Германия	Germany
+66	Гибралтар	Gibraltar
+67	Гондурас	Honduras
+68	Гонконг	Hong Kong
+69	Гренада	Grenada
+70	Гренландия	Greenland
+71	Греция	Greece
+72	Гуам	Guam
+73	Дания	Denmark
+74	Доминика	Dominica
+75	Доминиканская Республика	Dominican Republic
+76	Египет	Egypt
+77	Замбия	Zambia
+78	Западная Сахара	Western Sahara
+79	Зимбабве	Zimbabwe
+80	Индия	India
+81	Индонезия	Indonesia
+82	Иордания	Jordan
+83	Ирак	Iraq
+84	Иран	Iran
+85	Ирландия	Ireland
+86	Исландия	Iceland
+87	Испания	Spain
+88	Италия	Italy
+89	Йемен	Yemen
+90	Кабо-Верде	Cape Verde
+91	Камбоджа	Cambodia
+92	Камерун	Cameroon
+93	Катар	Qatar
+94	Кения	Kenya
+95	Кипр	Cyprus
+96	Кирибати	Kiribati
+97	Китай	China
+98	Колумбия	Colombia
+99	Коморы	Comoros
+100	Конго	Congo
+101	Конго, демократическая республика	Congo, Democratic Republic
+102	Коста-Рика	Costa Rica
+103	Кот д`Ивуар	C&#244;te d`Ivoire
+104	Куба	Cuba
+105	Кувейт	Kuwait
+106	Лаос	Laos
+107	Лесото	Lesotho
+108	Либерия	Liberia
+109	Ливан	Lebanon
+110	Ливия	Libya
+111	Лихтенштейн	Liechtenstein
+112	Люксембург	Luxembourg
+113	Маврикий	Mauritius
+114	Мавритания	Mauritania
+115	Мадагаскар	Madagascar
+116	Макао	Macau
+117	Македония	Macedonia
+118	Малави	Malawi
+119	Малайзия	Malaysia
+120	Мали	Mali
+121	Мальдивы	Maldives
+122	Мальта	Malta
+123	Марокко	Morocco
+124	Мартиника	Martinique
+125	Маршалловы Острова	Marshall Islands
+126	Мексика	Mexico
+127	Микронезия, федеративные штаты	Micronesia
+128	Мозамбик	Mozambique
+129	Монако	Monaco
+130	Монголия	Mongolia
+131	Монтсеррат	Montserrat
+132	Мьянма	Myanmar
+133	Намибия	Namibia
+134	Науру	Nauru
+135	Непал	Nepal
+136	Нигер	Niger
+137	Нигерия	Nigeria
+138	Кюрасао	Cura&#231;ao
+139	Нидерланды	Netherlands
+140	Никарагуа	Nicaragua
+141	Ниуэ	Niue
+142	Новая Зеландия	New Zealand
+143	Новая Каледония	New Caledonia
+144	Норвегия	Norway
+145	Объединенные Арабские Эмираты	United Arab Emirates
+146	Оман	Oman
+147	Остров Мэн	Isle of Man
+148	Остров Норфолк	Norfolk Island
+149	Острова Кайман	Cayman Islands
+150	Острова Кука	Cook Islands
+151	Острова Теркс и Кайкос	Turks and Caicos Islands
+152	Пакистан	Pakistan
+153	Палау	Palau
+154	Палестинская автономия	Palestine
+155	Панама	Panama
+156	Папуа - Новая Гвинея	Papua New Guinea
+157	Парагвай	Paraguay
+158	Перу	Peru
+159	Питкерн	Pitcairn Islands
+160	Польша	Poland
+161	Португалия	Portugal
+162	Пуэрто-Рико	Puerto Rico
+163	Реюньон	R&#233;union
+164	Руанда	Rwanda
+165	Румыния	Romania
+166	Сальвадор	El Salvador
+167	Самоа	Samoa
+168	Сан-Марино	San Marino
+169	Сан-Томе и Принсипи	S&#227;o Tom&#233; and Pr&#237;ncipe
+170	Саудовская Аравия	Saudi Arabia
+171	Свазиленд	Swaziland
+172	Святая Елена	Saint Helena
+173	Северная Корея	North Korea
+174	Северные Марианские острова	Northern Mariana Islands
+175	Сейшелы	Seychelles
+176	Сенегал	Senegal
+177	Сент-Винсент	Saint Vincent and the Grenadines
+178	Сент-Китс и Невис	Saint Kitts and Nevis
+179	Сент-Люсия	Saint Lucia
+180	Сент-Пьер и Микелон	Saint Pierre and Miquelon
+181	Сербия	Serbia
+182	Сингапур	Singapore
+183	Сирийская Арабская Республика	Syria
+184	Словакия	Slovakia
+185	Словения	Slovenia
+186	Соломоновы Острова	Solomon Islands
+187	Сомали	Somalia
+188	Судан	Sudan
+189	Суринам	Suriname
+190	Сьерра-Леоне	Sierra Leone
+191	Таиланд	Thailand
+192	Тайвань	Taiwan
+193	Танзания	Tanzania
+194	Того	Togo
+195	Токелау	Tokelau
+196	Тонга	Tonga
+197	Тринидад и Тобаго	Trinidad and Tobago
+198	Тувалу	Tuvalu
+199	Тунис	Tunisia
+200	Турция	Turkey
+201	Уганда	Uganda
+202	Уоллис и Футуна	Wallis and Futuna
+203	Уругвай	Uruguay
+204	Фарерские острова	Faroe Islands
+205	Фиджи	Fiji
+206	Филиппины	Philippines
+207	Финляндия	Finland
+208	Фолклендские острова	Falkland Islands
+209	Франция	France
+210	Французская Гвиана	French Guiana
+211	Французская Полинезия	French Polynesia
+212	Хорватия	Croatia
+213	Центрально-Африканская Республика	Central African Republic
+214	Чад	Chad
+215	Чехия	Czech Republic
+216	Чили	Chile
+217	Швейцария	Switzerland
+218	Швеция	Sweden
+219	Шпицберген и Ян Майен	Svalbard and Jan Mayen
+220	Шри-Ланка	Sri Lanka
+221	Эквадор	Ecuador
+222	Экваториальная Гвинея	Equatorial Guinea
+223	Эритрея	Eritrea
+224	Эфиопия	Ethiopia
+225	Южная Корея	South Korea
+226	Южно-Африканская Республика	South Africa
+227	Ямайка	Jamaica
+228	Япония	Japan
+229	Черногория	Montenegro
+230	Джибути	Djibouti
+231	Южный Судан	South Sudan
+232	Ватикан	Vatican
+233	Синт-Мартен	Sint Maarten
+234	Бонайре, Синт-Эстатиус и Саба	Bonaire, Sint Eustatius and Saba
+\.
+
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vlad
+--
+
+SELECT pg_catalog.setval('countries_id_seq', 234, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
