@@ -11,10 +11,12 @@ module HstoreProcessible
 
     def uses_hstore_accessor hstore_key, options = {}
       raise "Invalid attribute name: #{key}" unless column_names.include?(hstore_key.to_s)
+
       options.slice! :with
       options[:with].stringify_keys!
 
       @hstore_accessors = (@hstore_conditions || []).push(hstore_key.to_sym => options)
+
       _define_after_initialize_callback_for_hstore hstore_key, options
       _define_before_update_callback_for_hstore hstore_key, options
     end

@@ -44,4 +44,12 @@ class User < ActiveRecord::Base
   def cropping?
     crop_x.present? and crop_y.present? and crop_h.present? and crop_w.present?
   end
+
+  def country
+    Country.find_by(id: details['country_id'])
+  end
+
+  def city
+    City.find_by(id: details['city_id'])
+  end
 end

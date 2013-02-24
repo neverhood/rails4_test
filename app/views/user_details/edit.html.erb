@@ -8,14 +8,17 @@
   <%= form.input :name %>
 
   <%= form.simple_fields_for :details do |details_form| %>
-    <%= details_form.input :fake_country_id, :as => :select, prompt: t('.country_placeholder'), collection: countries_collection %>
-    <%= details_form.input :fake_city_id, :as => :select, prompt: t('.city_placeholder'), collection: [] %>
+    <%= details_form.input :fake_country_id, :as => :select, prompt: t('.country_placeholder'), collection: countries_collection,
+      selected: current_user.details['country_id'] %>
+
+    <%= details_form.input :fake_city_id, :as => :select, prompt: t('.city_placeholder'), collection: cities_collection,
+      selected: current_user.details['city_id'] %>
 
     <input type='text' id='country-auto-completion' placeholder='<%= t('.other_country') %>' />
     <input type='text' id='city-auto-completion' placeholder='<%= t('.other_city') %>' />
 
-    <%= details_form.input :country_id, :as => :hidden %>
-    <%= details_form.input :city_id,    :as => :hidden %>
+    <%= details_form.input :country_id, :as => :hidden, input_html: { value: current_user.details['country_id'] } %>
+    <%= details_form.input :city_id,    :as => :hidden, input_html: { value: current_user.details['city_id'] }    %>
   <% end %>
 
   <%= heads_up! t('.login_explanation') %>
