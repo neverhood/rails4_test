@@ -131,31 +131,12 @@ ALTER SEQUENCE albums_id_seq OWNED BY albums.id;
 --
 
 CREATE TABLE cities (
-    id integer NOT NULL,
+    id integer,
     name character varying(255),
     country_id integer,
     region_id integer,
     large boolean DEFAULT false
 );
-
-
---
--- Name: cities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE cities_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE cities_id_seq OWNED BY cities.id;
 
 
 --
@@ -617,13 +598,6 @@ ALTER TABLE ONLY albums ALTER COLUMN id SET DEFAULT nextval('albums_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY cities ALTER COLUMN id SET DEFAULT nextval('cities_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
 
 
@@ -717,14 +691,6 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY albums
     ADD CONSTRAINT albums_pkey PRIMARY KEY (id);
-
-
---
--- Name: cities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY cities
-    ADD CONSTRAINT cities_pkey PRIMARY KEY (id);
 
 
 --
@@ -878,6 +844,13 @@ CREATE UNIQUE INDEX index_albums_on_user_id_and_transliterated_name ON albums US
 --
 
 CREATE INDEX index_cities_on_country_id ON cities USING btree (country_id);
+
+
+--
+-- Name: index_cities_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_cities_on_id ON cities USING btree (id);
 
 
 --

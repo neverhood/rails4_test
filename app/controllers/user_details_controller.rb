@@ -7,14 +7,15 @@ class UserDetailsController < ApplicationController
   end
 
   def update
-    current_user.update_attributes(user_details_params)
+    current_user.update user_details_params
+
     respond_with current_user
   end
 
   private
 
   def user_details_params
-    params.require(:user).permit(:login, :avatar, :name, user_details: [ :country_id, :city_id ])
+    params.require(:user).permit(:login, :avatar, :name, details: [ :country_id, :city_id ])
   end
 
 end

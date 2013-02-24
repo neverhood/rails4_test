@@ -18,7 +18,7 @@ ru:
       users_search:
         male: 'Пол'
         name: 'Имя'
-      user_details:
+      details:
         fake_country_id: 'Страна'
         fake_city_id: 'Город'
 
@@ -148,9 +148,10 @@ ru:
       header: 'Редактирование профиля'
       login_explanation: 'Логин - это Ваше имя на сайте. С помощью него пользователи смогут посещать вашу страницу: <strong>http://bebet.net/profiles/<span id="current-login">ваш-логин</span></strong>'
       login_hint: 'разрешены только латинские буквы (A-Z) и символы "-", "_". Логин должен начинаться и заканчиваться на латинскую букву'
-      country_placeholder: 'Выбор страны'
+      country_placeholder: '-- Выбор страны --'
+      city_placeholder: '-- Выбор города --'
       other_country: 'Другая..'
-      other_city: 'Другой..'
+      other_city:    'Другой..'
 
   user_avatars:
     new_photo_modal:

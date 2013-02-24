@@ -7,7 +7,7 @@ $.api.userDetails = {
     init: ->
         if $.api.action == 'edit'
             countriesMap = {}
-            citiesMap = {}
+            citiesMap    = {}
 
             currentLoginContainer = $('span#current-login')
             currentLoginContainer.data('placeholder', currentLoginContainer.text())
@@ -23,32 +23,15 @@ $.api.userDetails = {
                 else
                     currentLoginContainer.text currentLoginContainer.data('placeholder')
 
-            $('select#user_details_fake_country_id').bind 'change', ->
-                $('input#user_details_country_id').val this.value
+            $('select#user_details_fake_country_id').countryCitySelection
+                cityId:                'input#user_details_city_id',
+                countryId:             'input#user_details_country_id',
+                citySelection:         'select#user_details_fake_city_id',
+                cityAutoCompletion:    'input#city-auto-completion',
+                countryAutoCompletion: 'input#country-auto-completion',
+                citiesUrl:             '/cities.json',
+                countriesUrl:          '/countries.json'
 
-                if this.value == '0'
-                    $this = $(this).hide()
 
-                    input = $('input#country-auto-completion').show()
-                    $this.parent().append input
-                    input.focus()
-
-            $('input#country-auto-completion').typeahead
-                source: (query, process) ->
-                    countriesMap = {}
-
-                    $.getJSON("/countries?query=#{query}", (data) ->
-                        objects = []
-                        $.each(data.countries, (index, object) ->
-                            countriesMap[object.name] = object
-                            objects.push(object.name)
-                        )
-
-                        process objects
-                    )
-
-                updater: (item) ->
-                    $('input#user_details_country_id').val countriesMap[item].id
-                    item
 }
 

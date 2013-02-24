@@ -51,6 +51,6 @@ Licemerov::Application.routes.draw do
 
   # Cities and countries
   get '/countries' => 'countries#index'
-  get '/cities' => 'cities#index'
+  get '/cities'    => 'cities#index'
 
 end

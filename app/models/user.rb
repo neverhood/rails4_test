@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  include HstoreProcessible
+
+  uses_hstore_accessor :details, with: {
+    country_id: { default: nil, type: Fixnum }, city_id: { default: nil, type: Fixnum }
+  }
+
   mount_uploader :avatar, AvatarUploader
 
   # Avatar cropping
@@ -30,10 +36,6 @@ class User < ActiveRecord::Base
   before_validation -> { self.login.downcase! }, if: -> { self.login_changed? }
   after_update      -> { self.avatar.recreate_versions! }, if: -> { self.cropping? }
   after_create      -> { self.create_profile }
-
-  def details
-    @details ||= OpenStruct.new(read_attribute(:details))
-  end
 
   def sex
     male?? :male : :female

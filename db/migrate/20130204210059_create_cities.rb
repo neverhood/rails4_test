@@ -1,6 +1,7 @@
 class CreateCities < ActiveRecord::Migration
   def up
-    create_table :cities do |t|
+    create_table :cities, id: false do |t|
+      t.integer :id, options: 'PRIMARY KEY'
       t.string :name
       t.integer :country_id
       t.integer :region_id
@@ -8,6 +9,7 @@ class CreateCities < ActiveRecord::Migration
       t.boolean :large, default: false # large city
     end
 
+    add_index :cities, :id, unique: true
     add_index :cities, :country_id
     add_index :cities, :region_id
     add_index :cities, :large

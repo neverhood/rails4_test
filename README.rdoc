@@ -1,3 +1,5 @@
 == TODO
 
 extract x-editable as gem
+
+pg_dump -t cities development_licemerov --data-only > cities.sql
