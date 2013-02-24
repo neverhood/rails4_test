@@ -89,6 +89,7 @@
 
         resetCities: ->
             settings.citySelection.find('option:gt(0)').remove()
+            settings.cityId.val('')
 
             if settings.cityAutoCompletion.is(':visible')
                 settings.cityAutoCompletion.val('').hide()
@@ -98,6 +99,7 @@
             methods.resetCities()
 
             settings.countryAutoCompletion.val('').hide()
+            settings.countryId.val('')
             settings.countrySelection.show()
 
         fetchAndAppendCities: (countryId, query) ->

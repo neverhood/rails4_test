@@ -6,8 +6,10 @@ module UserDetailsHelper
   end
 
   def cities_collection
-    if current_user.details['country_id'].present? and current_user.details['city_id'].present?
-      (Array(current_user.city) + current_user.country.cities.large).push OpenStruct.new(id: 0, name: t('.other_city'))
+    if current_user.details['country_id'].present?
+      current_user.country.cities.large.push(OpenStruct.new(id: 0, name: t('.other_city'))).tap do |cities|
+        cities.unshift current_user.city if current_user.details['city_id'].present?
+      end
     else
       []
     end.uniq

@@ -1,7 +1,11 @@
 class UserDetailsController < ApplicationController
+  include Nillable
+
   respond_to :html
 
   before_filter :authenticate_user!
+
+  nullifies user: { details: [ :city_id, :country_id ] }, only: [ :update ]
 
   def edit
   end
