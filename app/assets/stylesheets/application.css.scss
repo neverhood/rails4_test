@@ -82,36 +82,54 @@
 @import 'users_search';
 // Application styles END
 
-html, body {
-    height: 100%;
-}
-
 #header {
     div.navbar-inner {
         @include border-radius(0);
     }
 }
 
-#main-content {
+/* FOOTER */
+html,body {
+    height: 100%;
+}
+
+div#wrapper {
     min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -100px;
 }
 
-body#profiles, body#news-feed-entries, body#response-entries, body#albums {
-    margin-top: 0;
+div#push, div#footer {
+    height: 100px;
 }
 
-div.container {
-    min-height: 100%
-}
-
-div#footer footer {
-    height: 60px;
-    margin-top: -10px;
-    color: white;
-
-    p { padding: 15px; }
-
+div#footer {
     @include gradient-vertical($navbarInverseBackgroundHighlight, $navbarInverseBackground);
+
+    .container .message {
+        margin: 20px 0;
+    }
 }
+
+@media (max-width: 767px) {
+    div#footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+/* FOOTER END */
+
+/* Notifications */
+div#notifications {
+    h4 {
+        margin: 10px 0;
+    }
+}
+/* Notifications END */
+
+
 
 @import "bootstrap-responsive";

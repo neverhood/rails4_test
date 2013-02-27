@@ -8,18 +8,15 @@
 </head>
 <body id='<%= controller_name.dasherize %>' data-action='<%= action_name.dasherize %>' data-profile-owner='<%= profile_owner? %>'>
 
-<%= render 'header' %>
+<div id='wrapper'>
+  <%= render 'header' %>
+  <%= render 'notifications' %>
 
-<div class='container' id='main-content'>
-  <%- if flash[:alert] %>
-    <%= flash[:alert] %>
-  <% end %>
+  <div id='main-content' class='container'>
+    <%= yield %>
 
-  <%- if flash[:notice] %>
-    <%= flash[:notice] %>
-  <% end %>
-
-  <%= yield %>
+    <div id='push'></div>
+  </div>
 </div>
 
 <%= render 'footer' %>

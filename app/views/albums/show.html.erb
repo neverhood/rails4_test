@@ -3,6 +3,7 @@
 <div id='album'>
 
   <%= link_to((profile_owner?? t('.my_albums') : t('.albums')), user_albums_path(@user)) %>
+
   <%= render 'photos/form' %>
 
   <%- if profile_owner? %>
