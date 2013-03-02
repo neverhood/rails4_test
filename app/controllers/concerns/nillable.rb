@@ -34,7 +34,7 @@ module Nillable
 
       before_filter(options) do |controller|
         if attributes.is_a?(Hash)
-          attributes.keys.each { |key| controller.class.send(:_nullify_params_under_namespace,params[key], attributes[key]) }
+          attributes.keys.each { |key| controller.class.send(:_nullify_params_under_namespace, params[key], attributes[key]) }
         else
           controller.class.send(:_nullify_params_under_namespace, params, attributes)
         end

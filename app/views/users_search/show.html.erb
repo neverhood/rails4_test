@@ -1,15 +1,31 @@
 <%= page_header %>
 
-<div id='users-search-container'>
-  <%= simple_form_for :users_search, remote: true, html: { id: 'users-search' }, data: { placeholder_text: t('.no_users') } do |form| %>
-    <%= form.input :name, required: false %>
-    <%= form.input :male, :as => :radio_buttons, :collection => [ [t('common.male'), true], [t('common.female'), false] ], required: false %>
-  <% end %>
+<div class='row'>
+  <div id='users-search-container' class='span3 pull-left'>
+    <%= simple_form_for :users_search, remote: true, html: { id: 'users-search' }, data: { placeholder_text: t('.no_users') } do |form| %>
+      <div id='location-controls'>
+        <%= form.input :fake_country_id, as: :select, collection: Country.general, prompt: t('.country_placeholder'), required: false %>
+        <%= form.input :fake_city_id, as: :select, collection: [], prompt: t('.city_placeholder'), required: false %>
+
+        <input type='text' id='country-auto-completion' placeholder='<%= t('.other_country') %>' autocomplete='off' />
+        <input type='text' id='city-auto-completion' placeholder='<%= t('.other_city') %>' autocomplete='off' />
+
+        <%= form.input :country_id, as: :hidden %>
+        <%= form.input :city_id, as: :hidden %>
+      </div>
+
+      <%= form.input :name, required: false %>
+      <%= form.input :male, :as => :radio_buttons, :collection => [ [t('common.male'), true], [t('common.female'), false] ], required: false %>
+    <% end %>
+  </div>
+
+  <div class='span6'>
+    <h3 id='search-results-count'>
+      <%= t '.people_found' %>: <strong id='users-search-results-total'></strong>
+    </h3>
+
+    <div id='users-search-results' class='row'>
+    </div>
+  </div>
 </div>
 
-<div id='search-results-count'>
-  <%= t '.people_found' %>: <strong id='users-search-results-total'></strong>
-</div>
-
-<div id='users-search-results'>
-</div>

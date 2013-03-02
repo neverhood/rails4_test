@@ -19,6 +19,8 @@
 
             this.bind 'change', ->
                 settings.countryId.val this.value
+                settings.countryId.trigger 'change'
+
                 methods.resetCities()
 
                 if this.value == '0' # 'Other' selected, propose autocompletion
@@ -31,6 +33,7 @@
 
             settings.citySelection.bind 'change', ->
                 settings.cityId.val this.value
+                settings.cityId.trigger 'change'
 
                 if this.value == '0'
                     $this = $(this).hide()
@@ -64,6 +67,7 @@
                     methods.fetchAndAppendCities(countryId)
 
                     settings.countryId.val countryId
+                    settings.countryId.trigger 'change'
                     item
 
             settings.cityAutoCompletion.typeahead
@@ -84,12 +88,14 @@
 
                 updater: (item) ->
                     settings.cityId.val settings.citiesMap[item].id
+                    settings.cityId.trigger 'change'
                     item
 
 
         resetCities: ->
             settings.citySelection.find('option:gt(0)').remove()
-            settings.cityId.val('')
+            settings.cityId.val ''
+            settings.cityId.trigger 'change'
 
             if settings.cityAutoCompletion.is(':visible')
                 settings.cityAutoCompletion.val('').hide()
@@ -99,7 +105,8 @@
             methods.resetCities()
 
             settings.countryAutoCompletion.val('').hide()
-            settings.countryId.val('')
+            settings.countryId.val ''
+            settings.countryId.trigger 'change'
             settings.countrySelection.show()
 
         fetchAndAppendCities: (countryId, query) ->

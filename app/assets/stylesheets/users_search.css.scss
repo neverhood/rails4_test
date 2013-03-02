@@ -4,22 +4,19 @@
 
 body#users-search {
     div#users-search-container {
-        @extend .span3;
-        @extend .pull-left;
-
         border-right: 1px solid $grayLighter;
+
+        input#country-auto-completion, input#city-auto-completion {
+            display: none;
+        }
     }
 
     div#users-search-results {
-        @extend .span8;
-        @extend .pull-left;
-
         margin-left: 25px;
     }
 
-    div#search-results-count {
+    h3#search-results-count {
         display: none;
-        float: left;
 
         font-size: 18px;
         color: $grayLight;
@@ -27,22 +24,12 @@ body#users-search {
     }
 
     div.user {
-        div.user-avatar, div.user-info {
-            @extend .pull-left;
-        }
-        a { @extend %non-decorated }
+        margin-bottom: 10px;
+        clear: both;
 
         div.user-info {
-            margin-left: 25px;
-
-            div.user-name {
-                font-weight: bold;
-                font-size:   18px;
-                color:       $blue;
-
-                display: inline-block;
-                margin-bottom: 15px;
-            }
+            margin-left: 5px;
         }
     }
+
 }

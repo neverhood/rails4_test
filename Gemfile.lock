@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 67f812cabb47f3aeb5df6417dd774fdf4aee0a35
+  specs:
+    simple_form (3.0.0.beta1)
+      actionpack (>= 4.0.0.beta, < 4.1)
+      activemodel (>= 4.0.0.beta, < 4.1)
+
+GIT
   remote: git://github.com/rails/activerecord-deprecated_finders.git
   revision: 5937f3e7102f9be461ce2dccaef0e4d14e92cd35
   specs:
@@ -6,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/coffee-rails.git
-  revision: 836bfceb2e9035767bbb0a8fe839a86b5936a47c
+  revision: 948fef30464235e7588e34faa513b448a00c0e6b
   specs:
     coffee-rails (4.0.0.beta1)
       coffee-script (>= 2.2.0)
@@ -20,7 +28,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: b080ad35a59ec5f39031277ea89181ca7b651b9a
+  revision: c09f934dcb2d02763777e7fd025cdc33bc8ec8bb
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -40,7 +48,7 @@ GIT
       activesupport (= 4.0.0.beta1)
       arel (~> 4.0.0.beta1)
     activesupport (4.0.0.beta1)
-      i18n (~> 0.6, >= 0.6.2)
+      i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
@@ -62,7 +70,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/sass-rails.git
-  revision: 9b684bc9818b98d6c88165ed9b2ae425e2b4052f
+  revision: d435679b0fe528b954a9abd0059f975d94707574
   specs:
     sass-rails (4.0.0.beta1)
       railties (>= 4.0.0.beta, < 5.0)
@@ -80,15 +88,6 @@ GIT
       orm_adapter (~> 0.1)
       railties (> 3.1)
       warden (~> 1.2.1)
-
-GIT
-  remote: https://github.com/plataformatec/simple_form.git
-  revision: f70d638f38459474609a452bf3df71a8dc969cff
-  branch: rails_4
-  specs:
-    simple_form (3.0.0.dev)
-      actionpack (>= 4.0.0.beta, < 4.1)
-      activemodel (>= 4.0.0.beta, < 4.1)
 
 GEM
   remote: https://rubygems.org/
@@ -126,7 +125,7 @@ GEM
     domain_name (0.5.7)
       unf (~> 0.0.3)
     erubis (2.7.0)
-    eventmachine (1.0.0)
+    eventmachine (1.0.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -149,7 +148,7 @@ GEM
       rspec (~> 2.11)
     hike (1.2.1)
     htmlentities (4.3.1)
-    i18n (0.6.2)
+    i18n (0.6.4)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -184,7 +183,7 @@ GEM
     mime-types (1.21)
     mini_magick (3.5.0)
       subexec (~> 0.2.1)
-    minitest (4.6.1)
+    minitest (4.6.2)
     mocha (0.10.5)
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
@@ -259,7 +258,7 @@ GEM
     thor (0.17.0)
     thread_safe (0.1.0)
       atomic
-    tilt (1.3.3)
+    tilt (1.3.4)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)

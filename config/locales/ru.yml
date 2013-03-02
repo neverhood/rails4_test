@@ -21,6 +21,11 @@ ru:
       details:
         fake_country_id: 'Страна'
         fake_city_id: 'Город'
+      users_search:
+        fake_country_id: 'Страна'
+        fake_city_id: 'Город'
+        name: 'Имя'
+        male: 'Пол'
 
     # Labels and hints examples
     # labels:
@@ -209,6 +214,10 @@ ru:
       header: 'Поиск людей'
       no_users: 'Не найден ни один пользователь'
       people_found: 'Найдено людей'
+      other_country: 'Другая..'
+      other_city:    'Другой..'
+      country_placeholder: '-- Выбор страны --'
+      city_placeholder: '-- Выбор города --'
     user:
       photos_count: 'Фотографий'
 

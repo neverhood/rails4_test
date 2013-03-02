@@ -56,7 +56,7 @@ gem 'responders'
 gem 'pry-rails'
 gem 'russian'
 gem 'kaminari'
-gem 'simple_form', git: 'https://github.com/plataformatec/simple_form.git', branch: 'rails_4'
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
 # Image Processing
 gem 'carrierwave'

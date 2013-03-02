@@ -1,16 +1,16 @@
-<div class='user'>
+<div class='user span3'>
   <%= link_to user_path(user) do %>
-    <div class='user-avatar'>
+    <div class='user-avatar pull-left'>
       <%= image_tag user.avatar.url(:thumb) %>
     </div>
 
-    <div class='user-info'>
+    <div class='user-info pull-left'>
       <div class='user-name'>
         <%= user.name %>
       </div>
 
       <div class='user-photos-count'>
-        <strong> <%= t '.photos_count' %>: <span> <%= user.photos.count %> </span>
+        <strong> <%= t '.photos_count' %>: <span> <%= user.photos.count %> </span> </strong>
       </div>
     </div>
   <% end %>
