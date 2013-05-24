@@ -25,8 +25,8 @@ Licemerov::Application.routes.draw do
   resource :user_avatar, only: [ :create, :update, :destroy ] # create: new avatar, update: crop avatar, destroy: remove avatar
 
   # Subscriptions
-  resource :subscriptions, only: [ :create, :destroy, :index ]
-  get '/subscriptions' => 'subscriptions#index', as: 'subscriptions'
+  resource :subscriptions, only: [ :create, :destroy ]
+  #get '/subscriptions' => 'subscriptions#index', as: 'subscriptions'
 
   # Conversations
   resources :conversations, only: [ :destroy, :show, :index ]

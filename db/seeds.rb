@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+db_configuration = ActiveRecord::Base.configurations[Rails.env]
+
+%w( countries.pg cities.pg regions.pg ).each do |sql_file|
+  `psql -U #{ db_configuration['username'] } -d #{ db_configuration['database'] } -a -f db/seeds/#{sql_file}`
+end

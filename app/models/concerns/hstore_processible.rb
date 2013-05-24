@@ -10,6 +10,7 @@ module HstoreProcessible
     attr_reader :hstore_accessors_with_options
 
     def uses_hstore_accessor hstore_key, options = {}
+      return false unless ActiveRecord::Base.connection.table_exists?(self.table_name)
       raise "Invalid attribute name: #{key}" unless column_names.include?(hstore_key.to_s)
 
       options.slice! :with

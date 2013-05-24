@@ -43,6 +43,10 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+group :development do
+  gem 'letter_opener'
+end
+
 group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
@@ -62,6 +66,7 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'json', '~> 1.7.7'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -79,5 +84,3 @@ gem 'mini_magick'
 # To use debugger
 # gem 'debugger'
 
-gem 'mechanize'
-gem 'htmlentities'
