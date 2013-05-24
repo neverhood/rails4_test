@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.0.rc1'
 
 gem 'journey', github: 'rails/journey'
 gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
@@ -13,13 +13,13 @@ gem 'sqlite3'
 # in production environments by default.
 group :assets do
   gem 'sprockets-rails', '~> 2.0.0.rc1'
-  gem 'sass-rails', github: 'rails/sass-rails'
-  gem 'coffee-rails', github: 'rails/coffee-rails'
+  gem 'sass-rails', '~> 4.0.0.rc1'
+  gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.3.0'
 
   gem 'bootstrap-sass'
   gem 'font-awesome-sass-rails'
@@ -51,7 +51,7 @@ end
 # DB
 gem 'pg'
 
-gem 'devise', git: 'https://github.com/idl3/devise.git', branch: 'rails4'
+gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'responders'
 gem 'pry-rails'
 gem 'russian'
