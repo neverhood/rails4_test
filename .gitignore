@@ -22,3 +22,6 @@ TAGS
 /public/uploads/user/avatar/*
 /public/uploads/photo/image/*
 /public/uploads/tmp/*
+
+.ruby-version
+.ruby-gemset
