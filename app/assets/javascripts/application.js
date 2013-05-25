@@ -16,7 +16,15 @@
 //= require turbolinks
 //= require jquery-fileupload/basic
 //
-//= require bootstrap
+//= require bootstrap-transition
+//= require bootstrap-alert
+//= require bootstrap-modal
+//= require bootstrap-tooltip
+//= require bootstrap-popover
+//= require bootstrap-typeahead
+//
+//= require bootstrap-modal-extended
+//= require bootstrap-modalmanager
 //= require bootstrap-gallery
 //= require bootstrap-typeahead
 //= require endless-scrolling
