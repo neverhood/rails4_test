@@ -1,5 +1,9 @@
 <div id='photo'>
-  <%= link_to t('.album'), user_album_path(@photo.user, @photo.album.transliterated_name) %>
+  <%- if @photo.album_id.present? %>
+    <%= link_to t('.album'), user_album_path(@user, @photo.album.transliterated_name) %>
+  <% else %>
+    <%= link_to t('.back_to_albums'), user_albums_path(@user) %>
+  <% end %>
 
   <div id='image'>
     <%= image_tag @photo.image.url(:large) %>

@@ -17,4 +17,8 @@ class Album < ActiveRecord::Base
   def cover
     cover_photo_id.present?? cover_photo : photos.first
   end
+
+  def set_cover! photo
+    update_columns(cover_photo_id: photo.id) unless cover_photo_id == photo.id
+  end
 end

@@ -2,14 +2,15 @@ class AlbumsController < ApplicationController
   respond_to :html, :json
 
   before_filter :authenticate_user!, only: [ :create, :update, :destroy, :new, :edit ]
-
   before_filter :find_user!,  only: [ :show, :index ]
+
   before_filter :find_album_as_owner!, only: [ :edit, :update, :destroy ]
   before_filter :find_album!, only: [ :show ]
+  before_filter :find_photo!, only: [ :update ], if: -> { request.xhr? }
 
   def index
     @albums = @user.albums.page(params[:page]).order('created_at DESC')
-    @album  = current_user.albums.new if ( user_signed_in? and @user.id == current_user.id )
+    @album  = current_user.albums.new if profile_owner?
   end
 
   def show
@@ -51,9 +52,13 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    @album.update_attributes(album_params)
-
-    redirect_to user_album_path(user_id: current_user, album_name: @album.transliterated_name), notice: I18n.t('flash.albums.update.notice')
+    if request.xhr?
+      @album.set_cover! @photo
+      render json: { notification: I18n.t('flash.albums.update.cover_set') }
+    else
+      @album.update_attributes(album_params)
+      redirect_to user_album_path(user_id: current_user, album_name: @album.transliterated_name), notice: I18n.t('flash.albums.update.notice')
+    end
   end
 
   def destroy
@@ -75,7 +80,11 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:name, :description)
+    params.require(:album).permit(:name, :description, :cover_photo_id)
+  end
+
+  def find_photo!
+    @photo = @album.photos.find(params[:photo_id])
   end
 
 end

@@ -37,12 +37,16 @@ $.api.photos = {
                 $form.find('div.success-text').fadeOut( -> $(this).remove() )
             setTimeout callback, 2000
     bindAlbumIdUpdate: ->
-        albums = $.map( $.parseJSON( $('div#available-albums').text() ), (object) ->
-            { text: object.album.name, value: object.album.id })
+        albumsData = $.parseJSON( $('div#available-albums').text() )
+        albums = $.map( albumsData, (object) -> { text: object.name, value: object.id })
 
         @editContainer().find('a.choose-album').editable
             source: albums
             ajaxOptions: { type: 'put' }
+    bindCoverUpdate: ->
+        @editContainer().find('a.set-photo-as-cover').bind 'ajax:complete', (event, xhr, status) ->
+            response = $.parseJSON(xhr.responseText)
+            alert response.notification
 
     init: ->
         _this = this
@@ -126,6 +130,7 @@ $.api.photos = {
         if ( $.api.controller == 'albums' or $.api.controller == 'photos' ) and $.api.action == 'edit'
             $.api.photos.bindDescriptionUpdate()
             $.api.photos.bindAlbumIdUpdate()
+            $.api.photos.bindCoverUpdate() if $.api.controller == 'albums'
 
             $('div#edit-photos div.edit-photo a.destroy-photo').bind('ajax:beforeSend', ->
                 $(this).parents('div.edit-photo').remove()

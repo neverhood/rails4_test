@@ -47,13 +47,6 @@ body#albums, body#photos {
     }
 
     div#album-gallery-modal, div#gallery-modal {
-        top: 35%;
-        @extend .span10;
-
-        div.modal-body {
-            max-height: 600px;
-        }
-
         div#gallery-modal-image-container {
             text-align: center;
             cursor: pointer;

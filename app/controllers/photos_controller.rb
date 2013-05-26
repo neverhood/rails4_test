@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   respond_to :json, :html
 
   before_filter :authenticate_user!, only: [ :create, :destroy, :update, :edit ]
-  before_filter :find_user!, only: [ :index ]
+  before_filter :find_user!, only: [ :index, :show ]
 
   before_filter :find_photo_as_owner!, only: [ :update, :destroy ]
   before_filter :find_photo!, only: [ :show ]

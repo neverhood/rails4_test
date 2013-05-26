@@ -40,6 +40,10 @@ body#profiles {
     }
 
     div#crop-photo-modal {
+        div.modal-body {
+            min-height: 300px;
+        }
+
         div#user-avatar-cropbox {
             @extend .pull-left;
         }

@@ -7,6 +7,7 @@
     <%= simple_form_for photo, remote: true, html: { method: 'put' } do |form| %>
       <%= form.input :description, :as => :text, input_html: { id: nil, rows: 3, class: 'update-description span4', data: { notification: t('.updated') } } %>
 
+      <span class='info-text'> <%= t '.album' %> </span>
       <%- if photo.album_id.present? %>
         <%= link_to photo.album_name, nil, class: 'choose-album',
           data: { type: 'select', url: photo_path(photo), resource: 'photo', name: 'album_id', value: photo.album_id } %>
@@ -16,8 +17,16 @@
       <% end %>
     <% end %>
 
-    <div>
-      <%= link_to t('common.destroy'), photo_path(photo), class: 'destroy-photo', remote: true, method: 'delete', confirm: t('common.are_you_sure?') %>
+    <div class='edit-photo-options'>
+      <div class='edit-photo-option'>
+        <%= link_to t('common.destroy'), photo_path(photo), class: 'destroy-photo', remote: true, method: 'delete', data: { confirm: t('common.are_you_sure?') } %>
+      </div>
+
+      <%- if photo.album_id.present? %>
+        <div class='edit-photo-option'>
+          <%= link_to t('.set_as_cover'), album_path(@album, photo_id: photo.id), class: 'set-photo-as-cover', remote: true, method: 'put' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -9,6 +9,11 @@
 .error-text { color: $errorText; }
 .success-text { color: $successText; }
 
+.info-text {
+    color: $infoText;
+    font-weight: bold;
+}
+
 hr.clear-separator {
     clear: both;
 }
