@@ -46,7 +46,8 @@ $.api.photos = {
     bindCoverUpdate: ->
         @editContainer().find('a.set-photo-as-cover').bind 'ajax:complete', (event, xhr, status) ->
             response = $.parseJSON(xhr.responseText)
-            alert response.notification
+
+            $.api.utils.appendNotificationWithTimeout(response.notification)
 
     init: ->
         _this = this

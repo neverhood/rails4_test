@@ -126,12 +126,20 @@ div#footer {
 
 /* Notifications */
 div#notifications {
+    position: fixed;
+    left: 75%;
+
     h4 {
         margin: 10px 0;
     }
+
+    div.notification {
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-shadow: none;
+    }
 }
 /* Notifications END */
-
-
 
 @import "bootstrap-responsive";

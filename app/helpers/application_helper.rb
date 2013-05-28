@@ -18,6 +18,10 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def icon_label(classes, text = '')
+    "<i class='#{ classes }'></i> #{ text }".html_safe
+  end
+
   def news_count
     unread_news_feed_entries_count + unread_response_entries_count
   end

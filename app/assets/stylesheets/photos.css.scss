@@ -17,8 +17,6 @@ body#albums, body#photos {
             background: url(loader.gif) no-repeat center;
         }
 
-        div.view-photo {
-        }
     }
 
     div#new-photo-button {
@@ -58,6 +56,10 @@ body#albums, body#photos {
             }
         }
 
+        div#current-images-progress {
+            margin-top: 10px;
+        }
+
         div#gallery-modal-prev {
             float: left;
         }
@@ -70,6 +72,10 @@ body#albums, body#photos {
             font-size: 50px;
 
             @include opacity(60);
+        }
+
+        div.view-photo {
+            margin-top: 10px;
         }
     }
 
