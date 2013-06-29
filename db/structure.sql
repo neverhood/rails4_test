@@ -201,6 +201,36 @@ ALTER SEQUENCE countries_id_seq OWNED BY countries.id;
 
 
 --
+-- Name: items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE items (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    male boolean NOT NULL
+);
+
+
+--
+-- Name: items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE items_id_seq OWNED BY items.id;
+
+
+--
 -- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -300,6 +330,38 @@ CREATE SEQUENCE photo_comments_id_seq
 --
 
 ALTER SEQUENCE photo_comments_id_seq OWNED BY photo_comments.id;
+
+
+--
+-- Name: photo_items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE photo_items (
+    id integer NOT NULL,
+    photo_id integer NOT NULL,
+    item_id integer NOT NULL,
+    likes_count integer DEFAULT 0,
+    visible boolean DEFAULT true
+);
+
+
+--
+-- Name: photo_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE photo_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: photo_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE photo_items_id_seq OWNED BY photo_items.id;
 
 
 --
@@ -612,6 +674,13 @@ ALTER TABLE ONLY countries ALTER COLUMN id SET DEFAULT nextval('countries_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY items ALTER COLUMN id SET DEFAULT nextval('items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
 
 
@@ -627,6 +696,13 @@ ALTER TABLE ONLY news_feed_entries ALTER COLUMN id SET DEFAULT nextval('news_fee
 --
 
 ALTER TABLE ONLY photo_comments ALTER COLUMN id SET DEFAULT nextval('photo_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY photo_items ALTER COLUMN id SET DEFAULT nextval('photo_items_id_seq'::regclass);
 
 
 --
@@ -710,6 +786,14 @@ ALTER TABLE ONLY countries
 
 
 --
+-- Name: items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY items
+    ADD CONSTRAINT items_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -731,6 +815,14 @@ ALTER TABLE ONLY news_feed_entries
 
 ALTER TABLE ONLY photo_comments
     ADD CONSTRAINT photo_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: photo_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY photo_items
+    ADD CONSTRAINT photo_items_pkey PRIMARY KEY (id);
 
 
 --
@@ -889,6 +981,13 @@ CREATE UNIQUE INDEX index_countries_on_name ON countries USING btree (name);
 
 
 --
+-- Name: index_items_on_male; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_items_on_male ON items USING btree (male);
+
+
+--
 -- Name: index_messages_on_conversation_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -907,6 +1006,20 @@ CREATE INDEX index_messages_on_created_at ON messages USING btree (created_at);
 --
 
 CREATE INDEX index_news_feed_entries_on_user_id ON news_feed_entries USING btree (user_id);
+
+
+--
+-- Name: index_photo_items_on_photo_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_photo_items_on_photo_id ON photo_items USING btree (photo_id);
+
+
+--
+-- Name: index_photo_items_on_photo_id_and_item_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_photo_items_on_photo_id_and_item_id ON photo_items USING btree (photo_id, item_id);
 
 
 --
@@ -1018,3 +1131,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130204210039');
 INSERT INTO schema_migrations (version) VALUES ('20130204210059');
 
 INSERT INTO schema_migrations (version) VALUES ('20130210121035');
+
+INSERT INTO schema_migrations (version) VALUES ('20130528161742');
+
+INSERT INTO schema_migrations (version) VALUES ('20130528164013');

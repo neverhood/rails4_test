@@ -1,0 +1,9 @@
+<%- if @user.present? %>
+  <div class='hidden' id='user-json'>
+    <%= JSON.dump({ id: @user.id }) %>
+  </div>
+<%- elsif user_signed_in? %>
+  <div class='hidden' id='user-json'>
+    <%= JSON.dump({ id: current_user.id }) %>
+  </div>
+<% end %>

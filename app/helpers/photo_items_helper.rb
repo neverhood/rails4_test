@@ -1,0 +1,2 @@
+module PhotoItemsHelper
+end

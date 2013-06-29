@@ -8,6 +8,7 @@ class Photo < ActiveRecord::Base
   belongs_to :user
   belongs_to :album
   has_many :photo_comments, :dependent => :destroy
+  has_many :photo_items, :dependent => :destroy
 
   validates :description, length: { within: (0..1000) }, allow_nil: true
 
@@ -15,4 +16,5 @@ class Photo < ActiveRecord::Base
 
   scope :without_album, -> { where(album_id: nil) }
   scope :with_album_name, -> { select('photos.*, albums.name AS album_name').joins(:album) }
+  scope :with_items, -> { includes(:photo_items) }
 end

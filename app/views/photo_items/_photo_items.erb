@@ -1,0 +1,11 @@
+<% current_user_items.in_groups_of(3, false).each do |items_group| %>
+
+  <div class='photo-items-group pull-left'>
+    <% items_group.each do |item| %>
+      <label class='checkbox'>
+        <%= check_box_tag item.id, nil, photo_items.include?(item.id), data: { photo_id: photo.id } %> <%= I18n.t("items.#{current_user.sex}.#{item.name}") %>
+      </label>
+    <% end %>
+  </div>
+
+<% end %>

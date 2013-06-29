@@ -44,6 +44,7 @@
 //= require news_feed_entries
 //= require response_entries
 //= require photo_comments
+//= require photo_items
 //= require profiles
 //= require users_search
 //= require welcome
@@ -71,6 +72,8 @@ $(document).on('ready page:load', function() {
 
     if ( $('div#current-user-json').length )
         $.api.currentUser = $.parseJSON( $('div#current-user-json').text() )
+    if ( $('div#user-json').length )
+        $.api.user = $.parseJSON( $('div#user-json').text() )
 
     if ( typeof $.api[ $.camelCase($.api.controller) ] === 'object' ) $.api[ $.camelCase($.api.controller) ].init();
 

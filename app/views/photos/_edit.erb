@@ -27,9 +27,16 @@
           <%= link_to t('.set_as_cover'), album_path(@album, photo_id: photo.id), class: 'set-photo-as-cover', remote: true, method: 'put' %>
         </div>
       <% end %>
+
+      <div class='edit-photo-option'>
+        <%= link_to icon_label('icon-angle-down', t('photos.photo.toggle_photo_items_settings')), photo_items_path(photo), class: 'photo-items-settings-toggler' %>
+      </div>
+
+      <div class='photo-items-settings'>
+      </div>
     </div>
   </div>
 </div>
 
-<hr />
+<hr class='clear-separator' />
 

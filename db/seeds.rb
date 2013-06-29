@@ -6,8 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require "#{ Rails.root }/db/seeds/items"
+
 db_configuration = ActiveRecord::Base.configurations[Rails.env]
 
-%w( countries.pg cities.pg regions.pg ).each do |sql_file|
-  `psql -U #{ db_configuration['username'] } -d #{ db_configuration['database'] } -a -f db/seeds/#{sql_file}`
+if Country.count.zero?
+  `psql -U #{ db_configuration['username'] } -d #{ db_configuration['database'] } -a -f db/seeds/countries.pg`
+end
+
+if City.count.zero?
+  `psql -U #{ db_configuration['username'] } -d #{ db_configuration['database'] } -a -f db/seeds/cities.pg`
+end
+
+if Region.count.zero?
+  `psql -U #{ db_configuration['username'] } -d #{ db_configuration['database'] } -a -f db/seeds/regions.pg`
 end

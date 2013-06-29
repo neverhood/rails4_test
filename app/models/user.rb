@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
   after_update      -> { self.avatar.recreate_versions! }, if: -> { self.cropping? }
   after_create      -> { self.create_profile }
 
+  def items
+    Item.send(sex)
+  end
+
   def sex
     male?? :male : :female
   end

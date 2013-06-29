@@ -1,5 +1,8 @@
 $.api = {
     loading: false,
+    profileOwner: function() {
+        return ( typeof $.api.currentUser != 'undefined' && typeof $.api.user != 'undefined' && $.api.currentUser.id == $.api.user.id );
+    },
 
     Notification: function(text) {
         this.text = text;

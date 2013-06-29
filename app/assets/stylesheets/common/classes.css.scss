@@ -18,6 +18,10 @@ hr.clear-separator {
     clear: both;
 }
 
+hr.small {
+    width: 5px;
+}
+
 div.errors-container span {
     @extend .error-text;
 

@@ -152,6 +152,7 @@ ru:
       out_of: 'из'
     photo:
       view: 'На страницу с фотографией и комментариями'
+      toggle_photo_items_settings: 'Установить\изменить разрешенные оценки'
     show:
       album: 'К альбому'
       back_to_albums: 'Назад к альбомам'

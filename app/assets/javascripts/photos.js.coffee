@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $.api.photos = {
-    allowedImageFormats: /(\.|\/)(gif|p?jpe?g|png)$/i,
+    allowedImageFormats: /(\.|\/)(p?jpe?g|png)$/i,
     albumPhotosCount: -> $('div#album-photos div.photo').length,
     container: ->
         if $('div#album-photos').length then $('div#album-photos') else $('div#photos-container')
@@ -53,6 +53,7 @@ $.api.photos = {
         _this = this
 
         $.api.photoComments.init() if $.api.controller == 'photos' and $.api.action == 'show'
+        $.api.photoItems.init() if $.api.profileOwner()
 
         $('form#upload-photos').fileupload
             dataType: 'json',

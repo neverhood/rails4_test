@@ -1,0 +1,18 @@
+ru:
+  items:
+    male:
+      face: 'Лицо'
+      hair: 'Прическа'
+      abs: 'Пресс'
+      chest: 'Торс'
+      back: 'Спина'
+      shoulders: 'Плечи'
+      butt: 'Задница'
+      legs: 'Ноги'
+    female:
+      face: 'Лицо'
+      hair: 'Прическа'
+      abs: 'Живот'
+      chest: 'Грудь'
+      butt: 'Попа'
+      legs: 'Ноги'

@@ -47,7 +47,10 @@ Licemerov::Application.routes.draw do
   # Photo comments
   resources :photo_comments, only: [ :create, :update, :destroy ]
 
-
+  # Photo items
+  get 'photo_items/:photo_id' => 'photo_items#index', as: 'photo_items'
+  get 'photo_items/like/:id' => 'photo_items#like', as: 'like_photo_item'
+  get 'photo_items/toggle/:photo_id/:item_id' => 'photo_items#toggle', as: 'toggle_photo_item'
 
   # Cities and countries
   get '/countries' => 'countries#index'

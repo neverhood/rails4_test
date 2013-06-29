@@ -19,6 +19,17 @@ body#albums, body#photos {
 
     }
 
+    div.photo-items-settings-container {
+        margin: 10px 0;
+
+        div.photo-items-settings-toggler {
+        }
+
+        div.photo-items-settings {
+            margin: 5px 0;
+        }
+    }
+
     div#new-photo-button {
         cursor: pointer;
         float: left;
