@@ -61,11 +61,34 @@ function scrollDistanceFromBottom() {
     return pageHeight() - (window.pageYOffset + window.innerHeight);
 }
 
+function scrollDistanceFromTop() {
+}
+
 function pageHeight() {
     return Math.max(document.body.scrollHeight, document.body.offsetHeight);
 }
 
 $(document).on('ready page:load', function() {
+    var backToTop = $('div#back-to-top');
+    var $window = $(window);
+
+    $(this).bind('scroll', function() {
+
+        if ( $window.scrollTop() > 500 )
+            backToTop.show();
+        else
+            backToTop.hide();
+
+        if ( typeof backToTop.data('enlarged') === 'undefined' ) {
+            backToTop.css('height', backToTop.offset().height + $('div#header').height());
+            backToTop.data('enlarged', true);
+        }
+    });
+
+    backToTop.bind('click', function() {
+        window.scrollTo(0);
+    });
+
     $.api.controller     = this.body.id;
     $.api.action         = this.body.attributes['data-action'].value;
     $.api.isProfileOwner = this.body.attributes['data-profile-owner'].value === 'true';

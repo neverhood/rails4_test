@@ -4,7 +4,7 @@
   </div>
 
   <div class='photo-form'>
-    <%= simple_form_for photo, remote: true, html: { method: 'put' } do |form| %>
+    <%= simple_form_for photo, remote: true, html: { method: 'put', class: 'edit-photo-form' } do |form| %>
       <%= form.input :description, :as => :text, input_html: { id: nil, rows: 3, class: 'update-description span4', data: { notification: t('.updated') } } %>
 
       <span class='info-text'> <%= t '.album' %> </span>

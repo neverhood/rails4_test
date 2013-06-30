@@ -89,6 +89,12 @@
     div.navbar-inner {
         @include border-radius(0);
     }
+
+    margin-bottom: 0;
+}
+
+div#main-content {
+    margin-top: 20px;
 }
 
 /* FOOTER */
@@ -142,5 +148,28 @@ div#notifications {
     }
 }
 /* Notifications END */
+
+div#back-to-top {
+    display: none; /* being shown with js */
+    position: fixed;
+    width: 10%;
+    height: 100%;
+
+    text-align: center;
+
+    cursor: pointer;
+    background-color: rgba(0, 140, 228, 0.1);
+
+    &:hover {
+        background-color: rgba(0, 140, 228, 0.2);
+    }
+
+    i {
+        display: inline-block;
+        margin-top: 50px;
+
+        font-size: 25px;
+    }
+}
 
 @import "bootstrap-responsive";
